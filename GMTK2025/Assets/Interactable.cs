@@ -15,6 +15,7 @@ public class Interactable : MonoBehaviour
         Booze
     }
     public ObjectType thisType;
+    public GameObject putDownSpot;
 
     [Header("Toothbrush")]
     bool brushMode;
@@ -23,8 +24,9 @@ public class Interactable : MonoBehaviour
     public bool handOnWheel;
 
     [Header("Paperwork")]
-    bool overNoBox;
-    bool overYesBox;
+    public bool paperInPlace;
+    Transform currentYesBox, currentNoBox;
+    public bool overNoBox, overYesBox;
 
     [Header("Carrots")]
     bool overCarrot;
@@ -64,13 +66,25 @@ public class Interactable : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (overNoBox)
+                if (overNoBox && currentNoBox.GetComponentInParent<PaperStamp>().paperInPlace)
                 {
                     //No
+                    currentNoBox.GetComponentInParent<PaperStamp>().No();
+                    //Move paper away...
+
+                    overNoBox = false;
+                    currentNoBox = null;
+                    putDownSpot.GetComponent<Collider2D>().enabled = true;
                 }
-                if (overYesBox)
+                if (overYesBox && currentNoBox.GetComponentInParent<PaperStamp>().paperInPlace)
                 {
                     //Yes
+                    currentNoBox.GetComponentInParent<PaperStamp>().Yes();
+                    //Move paper away...
+
+                    overYesBox = false;
+                    currentYesBox = null;
+                    putDownSpot.GetComponent<Collider2D>().enabled = true;
                 }
             }
         }
@@ -108,10 +122,12 @@ public class Interactable : MonoBehaviour
         if(thisType == ObjectType.Stamp && collision.CompareTag("NoBox"))
         {
             overNoBox = true;
+            currentNoBox = collision.transform;
         }
         if (thisType == ObjectType.Stamp && collision.CompareTag("YesBox"))
         {
             overYesBox = true;
+            currentYesBox = collision.transform;
         }
 
         if (thisType == ObjectType.Knife && collision.CompareTag("Carrot"))
@@ -125,10 +141,12 @@ public class Interactable : MonoBehaviour
         if (thisType == ObjectType.Stamp && collision.CompareTag("NoBox"))
         {
             overNoBox = false;
+            currentNoBox = null;
         }
         if (thisType == ObjectType.Stamp && collision.CompareTag("YesBox"))
         {
             overYesBox = false;
+            currentYesBox = null;
         }
 
         if (thisType == ObjectType.Knife && collision.CompareTag("Carrot"))

@@ -5,8 +5,8 @@ using UnityEngine;
 public class CursorScript : MonoBehaviour
 {
     Transform cursorTransform;
-    bool overInteractable, overPutDownSpot;
-    Transform currentObject, currentPutDownSpot;
+    public bool overInteractable, overPutDownSpot, holdingObject;
+    public Transform currentObject, currentPutDownSpot;
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +18,24 @@ public class CursorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cursorTransform.position = Input.mousePosition;
+        if (holdingObject && currentObject == null)
+        {
+            currentObject = transform.GetChild(1);
+            overInteractable = true;
+        }
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        cursorTransform.position = new Vector3(mousePos.x, mousePos.y, 0);
         if (overInteractable && currentObject.GetComponent<Interactable>().isHoldable)
         {
             //Change sprite to point
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !holdingObject)
             {
                 //Pick up
                 currentObject.GetComponent<Interactable>().beingHeld = true;
-                if(currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Toothbrush)
+                holdingObject = true;
+                if (currentObject.GetComponent<Interactable>().putDownSpot != null) currentObject.GetComponent<Interactable>().putDownSpot.GetComponent<Collider2D>().enabled = true;
+                if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Toothbrush)
                 {
                     //Change sprite to holding cloth
                 }
@@ -47,16 +56,41 @@ public class CursorScript : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && overPutDownSpot)
             {
                 //Put down
-                currentObject.GetComponent<Interactable>().beingHeld = false;
                 if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Wheel)
                 {
+                    currentObject.GetComponent<Interactable>().beingHeld = false;
+                    holdingObject = false;
                     //Change to open sprite
                 }
-                else 
+                if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Paper)
                 {
+                    if (currentPutDownSpot = currentObject.GetComponent<Interactable>().putDownSpot.transform)
+                    {
+                        currentObject.GetComponent<Interactable>().beingHeld = false;
+                        holdingObject = false;
+                        currentObject.parent = currentPutDownSpot;
+                        currentObject.localPosition = Vector3.zero;
+                        currentObject.GetComponent<Interactable>().putDownSpot.GetComponent<Collider2D>().enabled = false;
+                        currentObject.GetComponent<PaperStamp>().paperInPlace = true;
+                        currentObject.GetComponent<Collider2D>().enabled = false;
+                        return;
+                    }
+                }
+                else if (currentPutDownSpot = currentObject.GetComponent<Interactable>().putDownSpot.transform)
+                {
+                    Debug.Log("Put");
+                    currentObject.GetComponent<Interactable>().beingHeld = false;
+                    holdingObject = false;
                     currentObject.parent = currentPutDownSpot;
                     currentObject.localPosition = Vector3.zero;
                 }
+                else
+                {
+                    currentObject.GetComponent<Interactable>().beingHeld = true;
+                    holdingObject = true;
+                    return;
+                }
+                if (currentObject.GetComponent<Interactable>().putDownSpot != null && !holdingObject) currentObject.GetComponent<Interactable>().putDownSpot.GetComponent<Collider2D>().enabled = false;
             }
         }
         else
@@ -74,7 +108,7 @@ public class CursorScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Interactable"))
+        if (collision.gameObject.CompareTag("Interactable") && !holdingObject)
         {
             overInteractable = true;
             currentObject = collision.transform;
