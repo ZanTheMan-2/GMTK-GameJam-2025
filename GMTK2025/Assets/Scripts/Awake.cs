@@ -8,6 +8,9 @@ public class Awake : MonoBehaviour
     public TMP_Text text;
     public GameObject blink1, blink2, blank;
     public GameObject bedroomBG, bathroomBG;
+    public DirtSpawner dirtSpawner;
+    bool dirtSpawned;
+    public GameObject cloth, cursor;
 
     private void Start()
     {
@@ -17,6 +20,9 @@ public class Awake : MonoBehaviour
         text.gameObject.SetActive(true);
         bathroomBG.gameObject.SetActive(false);
         bedroomBG.gameObject.SetActive(true);
+        dirtSpawned = false;
+        cloth.SetActive(false);
+        cursor.SetActive(false);
     }
 
     public void Update()
@@ -63,7 +69,14 @@ public class Awake : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
-            Debug.Log(i);
+            //Debug.Log(i);
+            if (i >= 0.00000001f && newBG == bathroomBG && !dirtSpawned)
+            {
+                dirtSpawned = true;
+                dirtSpawner.SpawnDirt();
+                cloth.SetActive(true);
+                cursor.SetActive(true);
+            }
         }
     }
 }
