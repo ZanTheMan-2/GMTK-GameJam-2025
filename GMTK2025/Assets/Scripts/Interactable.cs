@@ -70,22 +70,22 @@ public class Interactable : MonoBehaviour
                 if (overNoBox && currentNoBox.GetComponentInParent<PaperStamp>().paperInPlace)
                 {
                     //No
-                    currentNoBox.GetComponentInParent<PaperStamp>().No();
+                    currentNoBox.GetComponentInParent<PaperScript>().No();
                     //Move paper away...
-
+                    currentNoBox.GetComponentInParent<Animator>().SetTrigger("paperLeft");
+                    paperInPlace = false;
                     overNoBox = false;
                     currentNoBox = null;
-                    putDownSpot.GetComponent<Collider2D>().enabled = true;
                 }
                 if (overYesBox && currentYesBox.GetComponentInParent<PaperStamp>().paperInPlace)
                 {
                     //Yes
-                    currentYesBox.GetComponentInParent<PaperStamp>().Yes();
+                    currentYesBox.GetComponentInParent<PaperScript>().Yes();
                     //Move paper away...
-
+                    currentYesBox.GetComponentInParent<Animator>().SetTrigger("paperRight");
+                    paperInPlace = false;
                     overYesBox = false;
                     currentYesBox = null;
-                    putDownSpot.GetComponent<Collider2D>().enabled = true;
                 }
             }
         }

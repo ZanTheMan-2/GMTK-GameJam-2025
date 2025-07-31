@@ -18,18 +18,4 @@ public class PaperStamp : MonoBehaviour
     {
         
     }
-
-    public void Yes()
-    {
-        //Add money
-        //Add sanity
-        Debug.Log("Oooo you're insane");
-    }
-    
-    public void No()
-    {
-        //Add money
-        //Add sanity
-        Debug.Log("Oooo you're poor");
-    }
 }
