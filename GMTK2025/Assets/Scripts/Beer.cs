@@ -8,7 +8,7 @@ public class Beer : MonoBehaviour
     public Slider slider;
     public float drinkAmount, initValue,     refillSpeed, thirstThreshold, thirstMultiplier;
     public Car carScript;
-    public Animator Shake2D, Shake3D;
+    public Animator Shake2D;
 
     // Start is called before the first frame update
     void Start()
@@ -29,14 +29,12 @@ public class Beer : MonoBehaviour
             carScript.beerMultiplier = thirstMultiplier;
             //Screen Shake
             Shake2D.SetBool("Shake", true);
-            Shake3D.SetBool("Shake", true);
         }
         else
         {
             carScript.beerMultiplier = 1;
             //Unshake screen
             Shake2D.SetBool("Shake", false);
-            Shake3D.SetBool("Shake", false);
         }
     }
 
