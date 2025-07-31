@@ -281,8 +281,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa35768334cb34ce3a57c5c6a3bd91da, type: 3}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: a0c59474e52d2471f9df943717dacc2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -301,8 +301,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136145146}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.090800285, y: 0.022800446, z: 0}
-  m_LocalScale: {x: 15.160796, y: 14.091544, z: 1}
+  m_LocalPosition: {x: 0.1247, y: -0.1373, z: 0}
+  m_LocalScale: {x: 0.568009, y: 0.56368995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -724,8 +724,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f4e717a1e44b349e4868a4eb66a63602, type: 3}
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 21300000, guid: dc676991a6b17411f9988cf178c184ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -744,8 +744,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722118010}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0818, y: 0.1609, z: 0}
-  m_LocalScale: {x: 9.210191, y: 9.530423, z: 1}
+  m_LocalPosition: {x: 0.1581, y: -0.18, z: 0}
+  m_LocalScale: {x: 1.7178725, y: 1.5331888, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   blink1: {fileID: 1503635722}
   blink2: {fileID: 553375565}
   blank: {fileID: 973903840}
-  bedroomBG: {fileID: 2097886282}
+  bedroomBG: {fileID: 136145146}
   bathroomBG: {fileID: 722118010}
 --- !u!4 &1156117331
 Transform:

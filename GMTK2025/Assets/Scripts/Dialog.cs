@@ -12,7 +12,7 @@ public class Dialog : MonoBehaviour
 
     private int t;
     private bool talking = true;
-    public bool isTalking;
+    public bool isTalking, doneTalking = false;
     public GameObject textWindow;
 
 
@@ -41,6 +41,8 @@ public class Dialog : MonoBehaviour
         }catch 
         {
             Debug.Log("Array problem");
+            doneTalking = true;
+            this.enabled = false;
         }
     }
 }

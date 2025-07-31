@@ -39,7 +39,7 @@ public class Awake : MonoBehaviour
         blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
         blank.gameObject.SetActive(true);
 
-        StartCoroutine(transitionWaiter(bedroomBG, bathroomBG));        
+        StartCoroutine(transitionWaiter(bedroomBG, bathroomBG));
 
         // place holder for driving scene
         //
