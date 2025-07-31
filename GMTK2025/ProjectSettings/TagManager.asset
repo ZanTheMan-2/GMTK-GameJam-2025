@@ -9,6 +9,7 @@ TagManager:
   - Dirt
   - NoBox
   - YesBox
+  - CarrotDivider
   layers:
   - Default
   - TransparentFX

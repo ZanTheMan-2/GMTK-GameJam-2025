@@ -5,23 +5,54 @@ using UnityEngine;
 public class CursorScript : MonoBehaviour
 {
     Transform cursorTransform;
-    public bool overInteractable, overPutDownSpot, holdingObject;
+    public bool overInteractable, overPutDownSpot, holdingObject, holdingObjectNoSprite;
     public Transform currentObject, currentPutDownSpot;
+    public Sprite[] sprites;
 
     // Start is called before the first frame update
     void Start()
     {
         cursorTransform = transform;
         Cursor.visible = false;
+        sprites = transform.GetChild(0).GetComponentsInChildren<Sprite>();
+        foreach (Sprite currentSprite in sprites)
+        {
+            if (currentSprite.thisSprite == Sprite.Sprites.OpenHand)
+            {
+                currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                //currentSprite.GetComponent<Collider2D>().enabled = true;
+            }
+            else
+            {
+                currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (holdingObject && currentObject == null)
+        if (holdingObjectNoSprite && currentObject == null)
         {
             currentObject = transform.GetChild(1);
             overInteractable = true;
+        }
+        else if(currentObject == null)
+        {
+            foreach (Sprite currentSprite in sprites)
+            {
+                if (currentSprite.thisSprite == Sprite.Sprites.OpenHand)
+                {
+                    currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                    //currentSprite.GetComponent<Collider2D>().enabled = true;
+                }
+                else
+                {
+                    currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                    if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                }
+            }
         }
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
@@ -29,28 +60,93 @@ public class CursorScript : MonoBehaviour
         if (overInteractable && currentObject.GetComponent<Interactable>().isHoldable)
         {
             //Change sprite to point
+            foreach (Sprite currentSprite in sprites)
+            {
+                if (currentSprite.thisSprite == Sprite.Sprites.PointingHand && !holdingObject)
+                {
+                    currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                    //currentSprite.GetComponent<Collider2D>().enabled = true;
+                }
+                else if (!holdingObject)
+                {
+                    currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                    if(currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                }
+            }
             if (Input.GetMouseButtonDown(0) && !holdingObject)
             {
                 //Pick up
                 currentObject.GetComponent<Interactable>().beingHeld = true;
-                holdingObject = true;
                 if (currentObject.GetComponent<Interactable>().putDownSpot != null) currentObject.GetComponent<Interactable>().putDownSpot.GetComponent<Collider2D>().enabled = true;
                 if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Toothbrush)
                 {
                     //Change sprite to holding cloth
+                    currentObject.GetComponent<SpriteRenderer>().enabled = false;
+                    currentObject.GetComponent<Collider2D>().enabled = false;
+                    holdingObjectNoSprite = false;
+                    holdingObject = true;
+                    foreach (Sprite currentSprite in sprites)
+                    {
+                        if (currentSprite.thisSprite == Sprite.Sprites.HoldingCloth)
+                        {
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                            currentSprite.GetComponent<Collider2D>().enabled = true;
+                            currentObject = currentSprite.transform;
+                        }
+                        else
+                        {
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                            if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                        }
+                    }
                 }
-                if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Wheel)
+                else if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Wheel)
                 {
                     //Change sprite to hand on wheel
                 }
-                if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Knife)
+                else if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Knife)
                 {
                     //Change sprite to holding knife
+                    currentObject.GetComponent<SpriteRenderer>().enabled = false;
+                    currentObject.GetComponent<Collider2D>().enabled = false;
+                    holdingObjectNoSprite = false;
+                    holdingObject = true;
+                    foreach (Sprite currentSprite in sprites)
+                    {
+                        if (currentSprite.thisSprite == Sprite.Sprites.HoldingKnife)
+                        {
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                            currentSprite.GetComponent<Collider2D>().enabled = true;
+                            currentObject = currentSprite.transform;
+                        }
+                        else
+                        {
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                            if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                        }
+                    }
                 }
                 else
                 {
+                    holdingObjectNoSprite = true;
+                    holdingObject = true;
                     currentObject.parent = transform;
                     currentObject.localPosition = Vector3.zero;
+                    Debug.Log("closey");
+                    foreach (Sprite currentSprite in sprites)
+                    {
+                        if (currentSprite.thisSprite == Sprite.Sprites.ClosedHand)
+                        {
+                            Debug.Log("sprite closey");
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                            //currentSprite.GetComponent<Collider2D>().enabled = true;
+                        }
+                        else
+                        {
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                            if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                        }
+                    }
                 }
             }
             if (Input.GetMouseButtonDown(0) && overPutDownSpot)
@@ -61,13 +157,28 @@ public class CursorScript : MonoBehaviour
                     currentObject.GetComponent<Interactable>().beingHeld = false;
                     holdingObject = false;
                     //Change to open sprite
+                    foreach (Sprite currentSprite in sprites)
+                    {
+                        if (currentSprite.thisSprite == Sprite.Sprites.OpenHand)
+                        {
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                            //currentSprite.GetComponent<Collider2D>().enabled = true;
+                        }
+                        else
+                        {
+                            currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                            if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                        }
+                    }
+                    //Do wheel stuff...
                 }
-                if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Paper)
+                else if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Paper)
                 {
                     if (currentPutDownSpot = currentObject.GetComponent<Interactable>().putDownSpot.transform)
                     {
                         currentObject.GetComponent<Interactable>().beingHeld = false;
                         holdingObject = false;
+                        holdingObjectNoSprite = false;
                         currentObject.parent = currentPutDownSpot;
                         currentObject.localPosition = Vector3.zero;
                         currentObject.GetComponent<Interactable>().putDownSpot.GetComponent<Collider2D>().enabled = false;
@@ -78,9 +189,10 @@ public class CursorScript : MonoBehaviour
                 }
                 else if (currentPutDownSpot = currentObject.GetComponent<Interactable>().putDownSpot.transform)
                 {
-                    Debug.Log("Put");
+                    Debug.Log("Put - " + currentPutDownSpot + " - " + currentObject.GetComponent<Interactable>().putDownSpot.transform);
                     currentObject.GetComponent<Interactable>().beingHeld = false;
                     holdingObject = false;
+                    holdingObjectNoSprite = false;
                     currentObject.parent = currentPutDownSpot;
                     currentObject.localPosition = Vector3.zero;
                 }
@@ -93,15 +205,41 @@ public class CursorScript : MonoBehaviour
                 if (currentObject.GetComponent<Interactable>().putDownSpot != null && !holdingObject) currentObject.GetComponent<Interactable>().putDownSpot.GetComponent<Collider2D>().enabled = false;
             }
         }
-        else
+        else if (!holdingObject && !overInteractable)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 //Change to fist sprite
+                foreach (Sprite currentSprite in sprites)
+                {
+                    if (currentSprite.thisSprite == Sprite.Sprites.ClosedHand)
+                    {
+                        currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                        //currentSprite.GetComponent<Collider2D>().enabled = true;
+                    }
+                    else
+                    {
+                        currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                        if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                    }
+                }
             }
             if (Input.GetMouseButtonUp(0))
             {
                 //Change to open sprite
+                foreach (Sprite currentSprite in sprites)
+                {
+                    if (currentSprite.thisSprite == Sprite.Sprites.OpenHand)
+                    {
+                        currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                        //currentSprite.GetComponent<Collider2D>().enabled = true;
+                    }
+                    else
+                    {
+                        currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                        if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                    }
+                }
             }
         }
     }
