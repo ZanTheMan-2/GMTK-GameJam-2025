@@ -32,6 +32,10 @@ public class PaperScript : MonoBehaviour
     public void paperChange()
     {
         if (paperAmount < mainString.Length - 1) paperAmount += 1;
+        else
+        {
+            Debug.Log("You win!");
+        }
     }
 
     public void paperReset()
