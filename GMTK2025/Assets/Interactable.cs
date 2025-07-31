@@ -30,6 +30,7 @@ public class Interactable : MonoBehaviour
 
     [Header("Carrots")]
     bool overCarrot;
+    Transform currentCarrotDivider;
 
     [Header("Booze")]
     public bool overPutDown;
@@ -76,10 +77,10 @@ public class Interactable : MonoBehaviour
                     currentNoBox = null;
                     putDownSpot.GetComponent<Collider2D>().enabled = true;
                 }
-                if (overYesBox && currentNoBox.GetComponentInParent<PaperStamp>().paperInPlace)
+                if (overYesBox && currentYesBox.GetComponentInParent<PaperStamp>().paperInPlace)
                 {
                     //Yes
-                    currentNoBox.GetComponentInParent<PaperStamp>().Yes();
+                    currentYesBox.GetComponentInParent<PaperStamp>().Yes();
                     //Move paper away...
 
                     overYesBox = false;
@@ -96,6 +97,11 @@ public class Interactable : MonoBehaviour
                 if (overCarrot)
                 {
                     //Cut
+                    currentCarrotDivider.GetComponent<SpriteRenderer>().enabled = false;
+                    currentCarrotDivider.GetComponent<CarrotDivider>().Cut();
+                    currentCarrotDivider.GetComponent<Collider2D>().enabled = false;
+                    overCarrot = false;
+                    currentCarrotDivider = null;
                 }
             }
         }
@@ -130,9 +136,10 @@ public class Interactable : MonoBehaviour
             currentYesBox = collision.transform;
         }
 
-        if (thisType == ObjectType.Knife && collision.CompareTag("Carrot"))
+        if (thisType == ObjectType.Knife && collision.CompareTag("CarrotDivider"))
         {
             overCarrot = true;
+            currentCarrotDivider = collision.transform;
         }
     }
 
@@ -149,9 +156,10 @@ public class Interactable : MonoBehaviour
             currentYesBox = null;
         }
 
-        if (thisType == ObjectType.Knife && collision.CompareTag("Carrot"))
+        if (thisType == ObjectType.Knife && collision.CompareTag("CarrotDivider"))
         {
             overCarrot = false;
+            currentCarrotDivider = null;
         }
     }
 }
