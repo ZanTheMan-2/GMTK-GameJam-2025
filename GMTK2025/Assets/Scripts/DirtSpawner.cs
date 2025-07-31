@@ -9,6 +9,7 @@ public class DirtSpawner : MonoBehaviour
     public List<Vector3> availablePlaces;
     public int dirtToSpawn;
     public GameObject dirt;
+    public int minHealth, maxHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +48,7 @@ public class DirtSpawner : MonoBehaviour
         {
             GameObject currentDirt = GameObject.Instantiate(dirt);
             currentDirt.transform.position = location;
+            currentDirt.GetComponent<ToothDirt>().health = Random.Range(minHealth, maxHealth);
         }
     }
 }
