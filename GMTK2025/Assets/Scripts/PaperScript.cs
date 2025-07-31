@@ -7,11 +7,24 @@ public class PaperScript : MonoBehaviour
 {
     public TMP_Text mainText, bonusText;
     public string[] mainString;
-    public string[] amountString;
+    public int[] amountString;
+    public int amountCost;
 
-    private void Start()
+    public int paperAmount;
+
+
+    private void Update()
     {
-        mainText.text = mainString[0];
-        bonusText.text = amountString[0];
+        mainText.text = mainString[paperAmount];
+        bonusText.text = amountString[paperAmount].ToString();
+        amountCost = amountString[paperAmount];
+
+        if (Input.GetKeyDown(KeyCode.L)) paperChange();
+
+    }
+
+    public void paperChange()
+    {
+        paperAmount += 1;
     }
 }
