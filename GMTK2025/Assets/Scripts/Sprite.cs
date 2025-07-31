@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,5 +27,10 @@ public class Sprite : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public static implicit operator UnityEngine.Sprite(Sprite v)
+    {
+        throw new NotImplementedException();
     }
 }

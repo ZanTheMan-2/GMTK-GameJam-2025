@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class Dialog : MonoBehaviour
     public string[] dialog;
     public AudioClip[] speach;
     private AudioSource source;
+
+    public UnityEngine.Sprite[] sprites;
+    public SpriteRenderer spriteRenderer;
+
 
     private int t;
     private bool talking = true;
@@ -19,10 +24,13 @@ public class Dialog : MonoBehaviour
     public void Start()
     {
         source = this.GetComponent<AudioSource>();
+
+
     }
     public void Update()
     {
-        try{
+        try
+        {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 t += 1;
@@ -30,6 +38,9 @@ public class Dialog : MonoBehaviour
                 source.Stop();
             }
             dialogText.text = dialog[t];
+            UnityEngine.Sprite sprity = sprites[t];
+            spriteRenderer.sprite = sprity;
+
 
             if (talking)
             {
@@ -43,6 +54,7 @@ public class Dialog : MonoBehaviour
             Debug.Log("Array problem");
             doneTalking = true;
             this.enabled = false;
+            spriteRenderer.enabled = false;
         }
     }
 }

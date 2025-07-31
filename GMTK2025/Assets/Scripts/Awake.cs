@@ -7,10 +7,13 @@ public class Awake : MonoBehaviour
 {
     public TMP_Text text;
     public GameObject blink1, blink2, blank;
-    public GameObject bedroomBG, bathroomBG;
+    public GameObject bedroomBG, bathroomBG, bathroom, office;
     public DirtSpawner dirtSpawner;
     bool dirtSpawned;
     public GameObject cloth, cursor;
+    public Dialog officemanger;
+
+    public bool cleaned = false; // when this is true transition does
 
     private void Start()
     {
@@ -23,6 +26,8 @@ public class Awake : MonoBehaviour
         dirtSpawned = false;
         cloth.SetActive(false);
         cursor.SetActive(false);
+        officemanger.enabled = false;
+        office.gameObject.SetActive(false);
     }
 
     public void Update()
@@ -34,7 +39,13 @@ public class Awake : MonoBehaviour
             blink2.gameObject.SetActive(true);
             text.gameObject.SetActive(false);
             StartCoroutine(waiter());
-           // GetComponent<Awake>().enabled = false;
+        }
+
+        if (cleaned == true)   // goes to office
+        {
+            cleaned = false;
+            StartCoroutine(transitionWaiter(bathroom, office));
+            officemanger.enabled = true;
         }
     }
     IEnumerator waiter()
@@ -46,12 +57,6 @@ public class Awake : MonoBehaviour
         blank.gameObject.SetActive(true);
 
         StartCoroutine(transitionWaiter(bedroomBG, bathroomBG));
-
-        // place holder for driving scene
-        //
-        //
-        //
-
 
     }
 
