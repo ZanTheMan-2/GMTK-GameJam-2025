@@ -8,7 +8,7 @@ public class CursorScript : MonoBehaviour
     public bool overInteractable, overPutDownSpot, holdingObject, holdingObjectNoSprite;
     public Transform currentObject, currentPutDownSpot;
     public Sprite[] sprites;
-    bool handOnWheel;
+    public bool handOnWheel;
     public GameObject spriteObject;
 
     // Start is called before the first frame update
@@ -35,6 +35,31 @@ public class CursorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(handOnWheel && Input.GetMouseButtonDown(0) && !overInteractable)
+        {
+            handOnWheel = false;
+            GameObject.Find("Wheel").GetComponent<Interactable>().beingHeld = false;
+            holdingObject = false;
+            //Change to open sprite
+            spriteObject.SetActive(true);
+            foreach (Sprite currentSprite in sprites)
+            {
+                if (currentSprite.thisSprite == Sprite.Sprites.OpenHand)
+                {
+                    currentSprite.GetComponent<SpriteRenderer>().enabled = true;
+                    //currentSprite.GetComponent<Collider2D>().enabled = true;
+                }
+                else
+                {
+                    currentSprite.GetComponent<SpriteRenderer>().enabled = false;
+                    if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
+                }
+            }
+            //Do wheel stuff
+            GameObject.Find("Wheel").GetComponent<Car>().handOnWheel = false;
+            GameObject.Find("Wheel").GetComponent<Car>().SwitchSprite(false);
+        }
+
         if (holdingObjectNoSprite && currentObject == null)
         {
             currentObject = transform.GetChild(1);

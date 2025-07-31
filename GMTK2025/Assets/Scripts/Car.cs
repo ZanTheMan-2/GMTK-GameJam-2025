@@ -38,7 +38,7 @@ public class Car : MonoBehaviour
         wheel.rotation = Quaternion.Euler(0, 0, Mathf.Clamp(currentRotation, maxRotation * -1, maxRotation));
         currentCamRotation += Mathf.Clamp(currentRotation, maxRotation * -1, maxRotation) * camSensitivity;
         cam.rotation = Quaternion.Euler(0, Mathf.Clamp(currentCamRotation * -1, -90, 90), 0);
-        cam.position += cam.transform.forward * carSpeed * Time.deltaTime;
+        cam.Translate(cam.transform.forward * carSpeed * Time.deltaTime);
     }
 
     private void FixedUpdate()
