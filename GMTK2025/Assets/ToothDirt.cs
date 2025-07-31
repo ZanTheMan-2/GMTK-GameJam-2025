@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ToothDirt : MonoBehaviour
 {
-    int health;
+    public int health;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = Random.Range(3, 5);
+
     }
 
     // Update is called once per frame

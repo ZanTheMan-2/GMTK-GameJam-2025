@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CarrotDivider : MonoBehaviour
 {
-    public Transform leftSegment, rightSegment;
+    public int dividerNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,6 @@ public class CarrotDivider : MonoBehaviour
 
     public void Cut()
     {
-        rightSegment.position += Vector3.left * -3;
+        GetComponentInParent<CarrotManager>().DividerDestroyed(dividerNumber);
     }
 }

@@ -97,9 +97,9 @@ public class Interactable : MonoBehaviour
                 if (overCarrot)
                 {
                     //Cut
-                    currentCarrotDivider.GetComponent<SpriteRenderer>().enabled = false;
+                    //currentCarrotDivider.GetComponent<SpriteRenderer>().enabled = false;
                     currentCarrotDivider.GetComponent<CarrotDivider>().Cut();
-                    currentCarrotDivider.GetComponent<Collider2D>().enabled = false;
+                    //currentCarrotDivider.GetComponent<Collider2D>().enabled = false;
                     overCarrot = false;
                     currentCarrotDivider = null;
                 }
