@@ -95,6 +95,15 @@ public class Awake : MonoBehaviour
 
     IEnumerator DriveEndWaiter()
     {
+        Debug.Log("timer started");
+        blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
+        blank.gameObject.SetActive(true);
+        for (float i = 0; i < 2; i += 0.05f) // fades black to transition
+        {
+            Debug.Log("Fading" +i);
+            yield return new WaitForSeconds(0.05f);
+            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
         driveScene.gameObject.SetActive(false);
         cookScene.gameObject.SetActive(true);
         cookCam.gameObject.SetActive(true);

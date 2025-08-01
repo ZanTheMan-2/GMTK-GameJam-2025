@@ -38,6 +38,8 @@ public class PaperScript : MonoBehaviour
         else
         {
             StartCoroutine(win(officeScene, drivingScene));
+            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
+            blank.gameObject.SetActive(true);
         }
     }
 
