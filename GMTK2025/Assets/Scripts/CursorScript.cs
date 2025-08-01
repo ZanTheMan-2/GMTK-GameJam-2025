@@ -11,6 +11,7 @@ public class CursorScript : MonoBehaviour
     public bool handOnWheel;
     public GameObject spriteObject;
     Vector3 mousePos;
+    Awake manager;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class CursorScript : MonoBehaviour
 
     private void Awake()
     {
+        manager = GameObject.Find("GameManeger").GetComponent<Awake>();
         Cursor.lockState = CursorLockMode.Confined;
         Debug.Log(Camera.main);
         cursorTransform = transform;

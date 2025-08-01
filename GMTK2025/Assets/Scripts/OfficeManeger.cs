@@ -7,7 +7,7 @@ public class OfficeManeger : MonoBehaviour
     public Dialog talked;
     public GameObject currentBG, newBG, textBox, blank, paperTest, paperCanva;
     private bool ran = true;
-
+    public Awake awakeManager;
 
     private void Start()
     {
@@ -26,6 +26,7 @@ public class OfficeManeger : MonoBehaviour
 
     IEnumerator waiter()
     {
+        awakeManager.canCursor = false;
         ran = false;
         blank.gameObject.SetActive(true);
         textBox.gameObject.SetActive(false);
@@ -45,7 +46,7 @@ public class OfficeManeger : MonoBehaviour
             Debug.Log(i);
         }
         paperCanva.gameObject.SetActive(true);
-
+        awakeManager.canCursor = true;
     }
 }
 

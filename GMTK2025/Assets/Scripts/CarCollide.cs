@@ -23,6 +23,7 @@ public class CarCollide : MonoBehaviour
 
     IEnumerator transitionWaiter()
     {
+        manager.canCursor = false;
         blank.SetActive(true);
         for (float i = 0; i < 2; i += 0.05f) // fades black to transition
         {

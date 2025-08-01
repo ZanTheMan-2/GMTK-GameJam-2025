@@ -5,6 +5,7 @@ using TMPro;
 
 public class Awake : MonoBehaviour
 {
+    public bool canCursor;
     public TMP_Text text;
     public GameObject blink1, blink2, blank;
     public GameObject bedroomBG, bathroomBG, bathroom, office;
@@ -20,6 +21,7 @@ public class Awake : MonoBehaviour
 
     private void Start()
     {
+        canCursor = false;
         blank.gameObject.SetActive(true);
         blink1.gameObject.SetActive(false);
         blink2.gameObject.SetActive(false);
@@ -72,20 +74,18 @@ public class Awake : MonoBehaviour
         }
         currentBG.gameObject.SetActive(false);
         newBG.gameObject.SetActive(true);
+        dirtSpawned = true;
+        dirtSpawner.SpawnDirt();
+        cloth.SetActive(true);
+        cursor.SetActive(true);
 
         for (float i = 2; i > 0; i -= 0.05f) // open eyes
         {
             yield return new WaitForSeconds(0.05f);
             blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
-            //Debug.Log(i);
-            if (i >= 0.00000001f && newBG == bathroomBG && !dirtSpawned)
-            {
-                dirtSpawned = true;
-                dirtSpawner.SpawnDirt();
-                cloth.SetActive(true);
-                cursor.SetActive(true);
-            }
         }
+
+        canCursor = true;
     }
 
     public void DriveEnd()
@@ -96,7 +96,6 @@ public class Awake : MonoBehaviour
     IEnumerator DriveEndWaiter()
     {
         driveScene.gameObject.SetActive(false);
-        driveCam.gameObject.SetActive(false);
         cookScene.gameObject.SetActive(true);
         cookCam.gameObject.SetActive(true);
 
@@ -107,5 +106,6 @@ public class Awake : MonoBehaviour
         }
 
         blank.SetActive(false);
+        canCursor = true;
     }
 }

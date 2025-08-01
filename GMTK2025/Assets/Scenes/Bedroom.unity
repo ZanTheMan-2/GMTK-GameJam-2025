@@ -2526,6 +2526,7 @@ MonoBehaviour:
   blank: {fileID: 1376704353}
   paperTest: {fileID: 1203795389}
   paperCanva: {fileID: 393991978}
+  awakeManager: {fileID: 1156117330}
 --- !u!82 &921881422
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3595,6 +3596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456b3c79152f1473e9c8cacab5fcf788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canCursor: 0
   text: {fileID: 690490904}
   blink1: {fileID: 1503635722}
   blink2: {fileID: 553375565}
@@ -3607,10 +3609,10 @@ MonoBehaviour:
   cloth: {fileID: 1456437664}
   cursor: {fileID: 750240762}
   officemanger: {fileID: 921881423}
-  driveScene: {fileID: 0}
-  cookScene: {fileID: 0}
+  driveScene: {fileID: 1510582710}
+  cookScene: {fileID: 2116791342}
   driveCam: {fileID: 0}
-  cookCam: {fileID: 0}
+  cookCam: {fileID: 2080333438}
   cleaned: 0
 --- !u!4 &1156117331
 Transform:
