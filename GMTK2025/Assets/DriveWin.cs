@@ -2,25 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sleepy : MonoBehaviour
+public class DriveWin : MonoBehaviour
 {
-    public GameObject topBlink, bottomBlink, text, blank,sleepScene, wakeupScene;
-    public dayManeger dayManeger;
-
-    void Update()
+    public GameObject blank, driveScene, coockSceene, cam;
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            dayManeger.days += 1;
-            text.gameObject.SetActive(false);
-            topBlink.gameObject.SetActive(true);
-            bottomBlink.gameObject.SetActive(true);
-
-            StartCoroutine(transitionWaiter(sleepScene, wakeupScene));
-        }
+        Debug.Log("win");
+        StartCoroutine(transitionWaiter(driveScene, coockSceene));
     }
 
-    IEnumerator transitionWaiter(GameObject currentBG, GameObject newBG)  
+    IEnumerator transitionWaiter(GameObject currentBG, GameObject newBG)
     {
         for (float i = 0; i < 2; i += 0.05f) // fades black to transition
         {
@@ -29,6 +20,7 @@ public class Sleepy : MonoBehaviour
         }
 
         newBG.gameObject.SetActive(true);
+        cam.gameObject.SetActive(true);
 
         for (float i = 2; i > 0; i -= 0.05f) // open eyes
         {
