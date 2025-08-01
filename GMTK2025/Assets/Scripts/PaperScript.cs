@@ -21,6 +21,7 @@ public class PaperScript : MonoBehaviour
 
     public int[] moneyGainIfYes, sanityGainIfYes, moneyGainIfNo, sanityGainIfNo;
 
+    public AudioSource audioSource;
     private void Start()
     {
         moneyAmount = initMoney;
@@ -62,6 +63,7 @@ public class PaperScript : MonoBehaviour
     {
         if ((moneyAmount + moneyGainIfYes[paperAmount]) >= 0)
         {
+            audioSource.Play();
             //Add money
             moneyAmount += moneyGainIfYes[paperAmount];
             //Add sanity
@@ -82,6 +84,7 @@ public class PaperScript : MonoBehaviour
 
     public void No()
     {
+        audioSource.Play();
         //Add money
         moneyAmount += moneyGainIfNo[paperAmount];
         //Add sanity

@@ -13,6 +13,8 @@ public class CursorScript : MonoBehaviour
     Vector3 mousePos;
     Awake manager;
 
+    public AudioSource paperSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -242,6 +244,8 @@ public class CursorScript : MonoBehaviour
                 {
                     if (currentPutDownSpot = currentObject.GetComponent<Interactable>().putDownSpot.transform)
                     {
+                        paperSource.Play();
+                        Debug.Log("this is being played");
                         currentObject.GetComponent<Interactable>().beingHeld = false;
                         holdingObject = false;
                         holdingObjectNoSprite = false;
@@ -261,6 +265,8 @@ public class CursorScript : MonoBehaviour
                     holdingObjectNoSprite = false;
                     currentObject.parent = currentPutDownSpot;
                     currentObject.localPosition = Vector3.zero;
+                    paperSource.Play();
+
                 }
                 else
                 {

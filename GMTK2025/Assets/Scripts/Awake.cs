@@ -13,7 +13,7 @@ public class Awake : MonoBehaviour
     bool dirtSpawned;
     public GameObject cloth, cursor;
     public Dialog officemanger;
-
+    public AudioSource audioSource;
     //Driving
     public GameObject driveScene, cookScene, driveCam, driveCam3D, cookCam;
 
@@ -36,6 +36,8 @@ public class Awake : MonoBehaviour
         cursor.SetActive(false);
         officemanger.enabled = false;
         office.gameObject.SetActive(false);
+
+        audioSource.Play();
     }
 
     public void Update()
@@ -47,6 +49,8 @@ public class Awake : MonoBehaviour
             blink2.gameObject.SetActive(true);
             text.gameObject.SetActive(false);
             StartCoroutine(waiter());
+
+            audioSource.Stop();
         }
 
         if (cleaned == true)   // goes to office
