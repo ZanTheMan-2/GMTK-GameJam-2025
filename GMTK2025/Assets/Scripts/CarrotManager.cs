@@ -10,6 +10,8 @@ public class CarrotManager : MonoBehaviour
     public UnityEngine.Sprite[] sprites;
     private bool ready = true;
 
+    public AudioSource sound;
+
     private void Start()
     {
         BedScene.gameObject.SetActive(false);
@@ -24,6 +26,7 @@ public class CarrotManager : MonoBehaviour
         {
             dividers[dividerNumber - 2].GetComponent<SpriteRenderer>().enabled = true;
             dividers[dividerNumber - 2].GetComponent<Collider2D>().enabled = true;
+            sound.Play();
         }
         else
         {
