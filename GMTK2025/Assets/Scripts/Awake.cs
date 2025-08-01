@@ -13,7 +13,7 @@ public class Awake : MonoBehaviour
     bool dirtSpawned;
     public GameObject cloth, cursor;
     public Dialog officemanger;
-    public AudioSource audioSource, carSource;
+    public AudioSource audioSource, carSource, zangySource;
     //Driving
     public GameObject driveScene, cookScene, driveCam, driveCam3D, cookCam;
 
@@ -110,19 +110,10 @@ public class Awake : MonoBehaviour
             blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
 
-        for (float i = 2; i > 0; i -= 0.05f) // makes text apear
-        {
-            yield return new WaitForSeconds(0.05f);
-            blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
-            GetComponent<AudioSource>().volume = i / 2;
-        }
-
         bathroom.gameObject.SetActive(false);
         office.gameObject.SetActive(true);
         officeText.SetActive(false);
         officemanger.gameObject.SetActive(false);
-
-        yield return new WaitForSeconds(4);
 
         for (float i = 2; i > 0; i -= 0.05f) // open eyes
         {
@@ -201,10 +192,19 @@ public class Awake : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+            GetComponent<AudioSource>().volume = i / 2;
         }
-
+        GetComponent<AudioSource>().Pause();
+        zangySource.Play();
         canCursor = true;
         driveBlank.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        for (float i = 0; i < 2; i += 0.05f) // open eyes
+        {
+            yield return new WaitForSeconds(0.05f);
+            GetComponent<AudioSource>().volume = i / 2;
+        }
+        GetComponent<AudioSource>().UnPause();
     }
 
     public void DriveDeath()
@@ -219,18 +219,32 @@ public class Awake : MonoBehaviour
         carSource.Play();
 
         driveScene.gameObject.SetActive(false);
-        driveCam.gameObject.SetActive(false);
 
+        carCrashTXT.gameObject.SetActive(true);
         for (float i = 0; i < 1; i += 0.05f) // text fade
         {
             yield return new WaitForSeconds(0.05f);
             Color TXTcolor = carCrashTXT.color;
             TXTcolor.a = i;
             carCrashTXT.color = TXTcolor;
-
         }
+
+        yield return new WaitForSeconds(5);
+        for (float i = 1; i > 0; i -= 0.05f) // text fade
+        {
+            yield return new WaitForSeconds(0.05f);
+            Color TXTcolor = carCrashTXT.color;
+            TXTcolor.a = i;
+            carCrashTXT.color = TXTcolor;
+        }
+        driveBlank.SetActive(false);
+        carCrashTXT.gameObject.SetActive(false);
+        blank2.SetActive(true);
+        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        driveCam.gameObject.SetActive(false);
         cookCam.gameObject.SetActive(true);
         //Set death scene to true
+        cookScene.SetActive(true);
 
         for (float i = 2; i > 0; i -= 0.05f) // open eyes
         {
@@ -238,9 +252,7 @@ public class Awake : MonoBehaviour
             blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
 
-        driveBlank.SetActive(false);
         blank2.SetActive(false);
-        cookScene.SetActive(true);
         canCursor = true;
     }
 }

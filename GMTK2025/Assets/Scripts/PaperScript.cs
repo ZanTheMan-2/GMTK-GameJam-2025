@@ -78,6 +78,7 @@ public class PaperScript : MonoBehaviour
         else
         {
             Debug.Log("too poor");
+            stamp.GetComponent<AudioSource>().Play();
             return;
         }
     }

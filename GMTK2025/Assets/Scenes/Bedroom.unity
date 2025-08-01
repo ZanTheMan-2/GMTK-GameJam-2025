@@ -1407,7 +1407,7 @@ GameObject:
   - component: {fileID: 477814492}
   - component: {fileID: 477814493}
   - component: {fileID: 477814494}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: carText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1423,8 +1423,8 @@ RectTransform:
   m_GameObject: {fileID: 477814491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 524693850}
   m_RootOrder: 0
@@ -1544,7 +1544,7 @@ GameObject:
   - component: {fileID: 524693853}
   - component: {fileID: 524693852}
   - component: {fileID: 524693851}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1564,8 +1564,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 477814492}
-  m_Father: {fileID: 2729653492765728664}
-  m_RootOrder: 6
+  m_Father: {fileID: 2729653493173897211}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3845,6 +3845,7 @@ MonoBehaviour:
   officemanger: {fileID: 921881423}
   audioSource: {fileID: 136145149}
   carSource: {fileID: 2729653493875308348}
+  zangySource: {fileID: 2729653492765728666}
   driveScene: {fileID: 2729653492765728665}
   cookScene: {fileID: 2116791342}
   driveCam: {fileID: 2729653493173896966}
@@ -4102,6 +4103,7 @@ GameObject:
   - component: {fileID: 1182727915}
   - component: {fileID: 1182727913}
   - component: {fileID: 1182727917}
+  - component: {fileID: 1182727918}
   m_Layer: 0
   m_Name: Stamp
   m_TagString: Interactable
@@ -4247,6 +4249,102 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.71, y: 0.37}
   m_EdgeRadius: 0
+--- !u!82 &1182727918
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182727911}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 463068ec05fbcc44faec8d439b080a3d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1203795389
 GameObject:
   m_ObjectHideFlags: 0
@@ -12164,7 +12262,6 @@ Transform:
   - {fileID: 2729653493490346565}
   - {fileID: 2729653492987145106}
   - {fileID: 655074775323127538}
-  - {fileID: 524693850}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12594,6 +12691,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1449565938}
+  - {fileID: 524693850}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
