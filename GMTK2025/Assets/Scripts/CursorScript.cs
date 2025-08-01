@@ -216,6 +216,7 @@ public class CursorScript : MonoBehaviour
                 }
                 else
                 {
+                    if(currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Paper) paperSource.Play();
                     holdingObjectNoSprite = true;
                     holdingObject = true;
                     currentObject.parent = transform;
@@ -244,7 +245,6 @@ public class CursorScript : MonoBehaviour
                 {
                     if (currentPutDownSpot = currentObject.GetComponent<Interactable>().putDownSpot.transform)
                     {
-                        paperSource.Play();
                         Debug.Log("this is being played");
                         currentObject.GetComponent<Interactable>().beingHeld = false;
                         holdingObject = false;
@@ -265,7 +265,7 @@ public class CursorScript : MonoBehaviour
                     holdingObjectNoSprite = false;
                     currentObject.parent = currentPutDownSpot;
                     currentObject.localPosition = Vector3.zero;
-                    paperSource.Play();
+                    //paperSource.Play();
 
                 }
                 else

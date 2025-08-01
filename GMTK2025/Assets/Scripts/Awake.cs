@@ -42,7 +42,7 @@ public class Awake : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying)
         {
             blank.gameObject.SetActive(false);
             blink1.gameObject.SetActive(true);
@@ -51,6 +51,7 @@ public class Awake : MonoBehaviour
             StartCoroutine(waiter());
 
             audioSource.Stop();
+            GetComponent<AudioSource>().Play();
         }
 
         if (cleaned == true)   // goes to office
@@ -115,8 +116,10 @@ public class Awake : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+            GetComponent<AudioSource>().volume = i / 2;
         }
 
+        GetComponent<AudioSource>().Pause();
         blank2.SetActive(false);
         officeText.SetActive(true);
         officemanger.gameObject.SetActive(true);

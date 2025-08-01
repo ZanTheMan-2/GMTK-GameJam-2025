@@ -21,11 +21,15 @@ public class OfficeManeger : MonoBehaviour
     }
     void Update()
     {
-        if (talked.doneTalking && ran) StartCoroutine(waiter());
+        if (talked.doneTalking && ran)
+        {
+            StartCoroutine(waiter());
+        }
     }
 
     IEnumerator waiter()
     {
+        awakeManager.GetComponent<AudioSource>().UnPause();
         awakeManager.canCursor = false;
         ran = false;
         blank.gameObject.SetActive(true);
@@ -34,6 +38,7 @@ public class OfficeManeger : MonoBehaviour
         {
             yield return new WaitForSeconds(0.05f);
             blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+            awakeManager.GetComponent<AudioSource>().volume = i / 2;
         }
         currentBG.gameObject.SetActive(false);
         newBG.gameObject.SetActive(true);
