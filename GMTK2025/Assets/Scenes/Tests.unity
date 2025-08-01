@@ -226,8 +226,11 @@ MonoBehaviour:
   putDownSpot: {fileID: 2034772165}
   handOnWheel: 0
   paperInPlace: 0
+  currentYesBox: {fileID: 0}
+  currentNoBox: {fileID: 0}
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!212 &149737532
 SpriteRenderer:
@@ -351,8 +354,11 @@ MonoBehaviour:
   putDownSpot: {fileID: 0}
   handOnWheel: 0
   paperInPlace: 0
+  currentYesBox: {fileID: 0}
+  currentNoBox: {fileID: 0}
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!50 &150170770
 Rigidbody2D:
@@ -837,8 +843,11 @@ MonoBehaviour:
   putDownSpot: {fileID: 0}
   handOnWheel: 0
   paperInPlace: 0
+  currentYesBox: {fileID: 0}
+  currentNoBox: {fileID: 0}
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!212 &577085178
 SpriteRenderer:
@@ -1512,6 +1521,7 @@ GameObject:
   - component: {fileID: 1809547181}
   - component: {fileID: 1809547182}
   - component: {fileID: 1809547183}
+  - component: {fileID: 1809547184}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Untagged
@@ -1555,13 +1565,19 @@ MonoBehaviour:
   - {fileID: 1420408177}
   - {fileID: 287327194}
   - {fileID: 1909072171}
+  blank: {fileID: 913121535}
+  carrotScene: {fileID: 913121535}
+  BedScene: {fileID: 913121535}
+  arms: {fileID: 913121535}
   spriteRenderer: {fileID: 1809547183}
+  carrotRender: {fileID: 1809547183}
   sprites:
   - {fileID: 21300000, guid: ea8da4d527cb68f4e9cc86fb61acc6e3, type: 3}
   - {fileID: 21300000, guid: 23b9785b6623e5a4f9a94de4da031aab, type: 3}
   - {fileID: 21300000, guid: 1fb377713cc20414fbb98e3264343aa8, type: 3}
   - {fileID: 21300000, guid: 86b34f9e23d9a074e9fd860ba7fa817c, type: 3}
   - {fileID: 21300000, guid: d06bca4e6e1229a49a4b90ca3a2ef172, type: 3}
+  sound: {fileID: 1809547184}
 --- !u!212 &1809547183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1614,6 +1630,102 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1809547184
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809547180}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f9a16b67debfe477a9d407c0e5be54d1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1903120987
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,8 +2367,11 @@ MonoBehaviour:
   putDownSpot: {fileID: 2067298023}
   handOnWheel: 0
   paperInPlace: 0
+  currentYesBox: {fileID: 0}
+  currentNoBox: {fileID: 0}
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!212 &2142209872
 SpriteRenderer:
