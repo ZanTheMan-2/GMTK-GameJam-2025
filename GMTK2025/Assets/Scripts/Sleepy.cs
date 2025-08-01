@@ -22,6 +22,7 @@ public class Sleepy : MonoBehaviour
 
     IEnumerator transitionWaiter(GameObject currentBG, GameObject newBG)  
     {
+        text.gameObject.SetActive(false);
         for (float i = 0; i < 2; i += 0.05f) // fades black to transition
         {
             yield return new WaitForSeconds(0.05f);
@@ -36,5 +37,6 @@ public class Sleepy : MonoBehaviour
             blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
         currentBG.gameObject.SetActive(false);
+        text.gameObject.SetActive(true);
     }
 }

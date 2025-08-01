@@ -6,14 +6,14 @@ using TMPro;
 public class Awake : MonoBehaviour
 {
     public bool canCursor;
-    public TMP_Text text;
+    public TMP_Text text, carCrashTXT;
     public GameObject blink1, blink2, blank, blank2, driveBlank;
     public GameObject bedroomBG, bathroomBG, bathroom, office;
     public DirtSpawner dirtSpawner;
     bool dirtSpawned;
     public GameObject cloth, cursor;
     public Dialog officemanger;
-    public AudioSource audioSource;
+    public AudioSource audioSource, carSource;
     //Driving
     public GameObject driveScene, cookScene, driveCam, driveCam3D, cookCam;
 
@@ -38,6 +38,9 @@ public class Awake : MonoBehaviour
         office.gameObject.SetActive(false);
 
         audioSource.Play();
+        Color TXTcolor = carCrashTXT.color;
+        TXTcolor.a = 0;
+        carCrashTXT.color = TXTcolor;
     }
 
     public void Update()
@@ -107,10 +110,19 @@ public class Awake : MonoBehaviour
             blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
 
+        for (float i = 2; i > 0; i -= 0.05f) // makes text apear
+        {
+            yield return new WaitForSeconds(0.05f);
+            blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+            GetComponent<AudioSource>().volume = i / 2;
+        }
+
         bathroom.gameObject.SetActive(false);
         office.gameObject.SetActive(true);
         officeText.SetActive(false);
         officemanger.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(4);
 
         for (float i = 2; i > 0; i -= 0.05f) // open eyes
         {
@@ -203,17 +215,20 @@ public class Awake : MonoBehaviour
     IEnumerator DriveDeathWaiter()
     {
         driveBlank.gameObject.SetActive(true);
-        driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
-        for (float i = 0; i < 2; i += 0.05f) // fades black to transition
-        {
-            yield return new WaitForSeconds(0.05f);
-            driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
-        }
+        driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        carSource.Play();
 
-        blank2.SetActive(true);
-        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         driveScene.gameObject.SetActive(false);
         driveCam.gameObject.SetActive(false);
+
+        for (float i = 0; i < 1; i += 0.05f) // text fade
+        {
+            yield return new WaitForSeconds(0.05f);
+            Color TXTcolor = carCrashTXT.color;
+            TXTcolor.a = i;
+            carCrashTXT.color = TXTcolor;
+
+        }
         cookCam.gameObject.SetActive(true);
         //Set death scene to true
 
@@ -225,6 +240,7 @@ public class Awake : MonoBehaviour
 
         driveBlank.SetActive(false);
         blank2.SetActive(false);
-        //canCursor = true;
+        cookScene.SetActive(true);
+        canCursor = true;
     }
 }
