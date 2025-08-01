@@ -29,7 +29,7 @@ public class PaperScript : MonoBehaviour
         sanityTXT.text = "Sanity: " + sanityAmount.ToString();
 
         if (Input.GetKeyDown(KeyCode.L)) paperChange();
-        if (paperAmount == 8) StartCoroutine(win(officeScene, drivingScene));
+        //if (paperAmount == 8) StartCoroutine(win(officeScene, drivingScene));
     }
 
     public void paperChange()
@@ -75,15 +75,14 @@ public class PaperScript : MonoBehaviour
 
 
     IEnumerator win(GameObject currentBG, GameObject newBG)
-    {
-        cam.gameObject.SetActive(false);
-        
+    {   
         for (float i = 0; i < 2; i += 0.05f) // fades black to transition
         {
             yield return new WaitForSeconds(0.05f);
             blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
 
+        cam.gameObject.SetActive(false);
         newBG.gameObject.SetActive(true);
         arms.gameObject.SetActive(false);
 

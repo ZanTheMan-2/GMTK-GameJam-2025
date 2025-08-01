@@ -10,12 +10,11 @@ public class CursorScript : MonoBehaviour
     public Sprite[] sprites;
     public bool handOnWheel;
     public GameObject spriteObject;
+    Vector3 mousePos;
 
     // Start is called before the first frame update
     void Start()
     {
-        cursorTransform = transform;
-        Cursor.visible = false;
         sprites = transform.GetChild(0).GetComponentsInChildren<Sprite>();
         foreach (Sprite currentSprite in sprites)
         {
@@ -32,11 +31,20 @@ public class CursorScript : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Debug.Log(Camera.main);
+        cursorTransform = transform;
+        Cursor.visible = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if(handOnWheel && Input.GetMouseButtonDown(0) && !overInteractable)
         {
+            Cursor.lockState = CursorLockMode.None;
             handOnWheel = false;
             GameObject.Find("Wheel").GetComponent<Interactable>().beingHeld = false;
             holdingObject = false;
@@ -98,7 +106,7 @@ public class CursorScript : MonoBehaviour
             }
         }
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         cursorTransform.position = new Vector3(mousePos.x, mousePos.y, 0);
         if (overInteractable && currentObject.GetComponent<Interactable>().isHoldable)
         {
@@ -118,6 +126,7 @@ public class CursorScript : MonoBehaviour
             }
             if (Input.GetMouseButtonDown(0) && handOnWheel && currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Wheel)
             {
+                Cursor.lockState = CursorLockMode.None;
                 handOnWheel = false;
                 currentObject.GetComponent<Interactable>().beingHeld = false;
                 holdingObject = false;
@@ -170,6 +179,7 @@ public class CursorScript : MonoBehaviour
                 else if (currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Wheel)
                 {
                     //Change sprite to hand on wheel
+                    Cursor.lockState = CursorLockMode.Locked;
                     spriteObject.SetActive(false);
                     currentObject.GetComponent<Car>().handOnWheel = true;
                     currentObject.GetComponent<Car>().SwitchSprite(true);
@@ -234,7 +244,7 @@ public class CursorScript : MonoBehaviour
                         currentObject.parent = currentPutDownSpot;
                         currentObject.localPosition = Vector3.zero;
                         currentObject.GetComponent<Interactable>().putDownSpot.GetComponent<Collider2D>().enabled = false;
-                        currentObject.GetComponent<PaperStamp>().paperInPlace = true;
+                        currentObject.GetComponent<PaperScript>().paperInPlace = true;
                         currentObject.GetComponent<Collider2D>().enabled = false;
                         return;
                     }

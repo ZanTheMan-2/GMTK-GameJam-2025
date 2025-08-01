@@ -13,9 +13,13 @@ public class ToothDirt : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (health == 0) Destroy(gameObject);
+        if (health == 0)
+        {
+            GetComponentInParent<DirtSpawner>().dirts.Remove(gameObject);
+            Destroy(gameObject);
+        }
     }
 
     public void Clean()

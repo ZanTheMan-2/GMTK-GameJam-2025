@@ -563,6 +563,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.75
       objectReference: {fileID: 0}
+    - target: {fileID: 5750381331996787799, guid: 8a71ed5f65dd4904f82ccf4542da6465, type: 3}
+      propertyPath: blank
+      value: 
+      objectReference: {fileID: 1376704353}
+    - target: {fileID: 5750381331996787799, guid: 8a71ed5f65dd4904f82ccf4542da6465, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 1156117330}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a71ed5f65dd4904f82ccf4542da6465, type: 3}
 --- !u!1 &136145146
@@ -3507,6 +3515,7 @@ MonoBehaviour:
   paperInPlace: 0
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!212 &1155966876
 SpriteRenderer:
@@ -3602,6 +3611,10 @@ MonoBehaviour:
   cloth: {fileID: 1456437664}
   cursor: {fileID: 750240762}
   officemanger: {fileID: 921881423}
+  driveScene: {fileID: 0}
+  cookScene: {fileID: 0}
+  driveCam: {fileID: 0}
+  cookCam: {fileID: 0}
   cleaned: 0
 --- !u!4 &1156117331
 Transform:
@@ -3834,6 +3847,7 @@ MonoBehaviour:
   paperInPlace: 0
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!212 &1182727916
 SpriteRenderer:
@@ -4393,7 +4407,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -4569,6 +4583,7 @@ MonoBehaviour:
   paperInPlace: 0
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!50 &1456437666
 Rigidbody2D:
@@ -4755,6 +4770,7 @@ MonoBehaviour:
   paperInPlace: 0
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!212 &1472030726
 SpriteRenderer:
@@ -5105,6 +5121,7 @@ MonoBehaviour:
   paperInPlace: 0
   overNoBox: 0
   overYesBox: 0
+  clicked: 0
   overPutDown: 0
 --- !u!114 &1545712901
 MonoBehaviour:
@@ -8162,6 +8179,8 @@ MonoBehaviour:
   dirt: {fileID: 7320890135837354477, guid: 4c536e0a722fc62499258c109aaa7eca, type: 3}
   minHealth: 7
   maxHealth: 18
+  dirts: []
+  managerScript: {fileID: 1156117330}
 --- !u!1001 &1795284011
 PrefabInstance:
   m_ObjectHideFlags: 0

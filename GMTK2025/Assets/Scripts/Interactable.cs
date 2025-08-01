@@ -26,7 +26,7 @@ public class Interactable : MonoBehaviour
     [Header("Paperwork")]
     public bool paperInPlace;
     Transform currentYesBox, currentNoBox;
-    public bool overNoBox, overYesBox;
+    public bool overNoBox, overYesBox, clicked;
 
     [Header("Carrots")]
     bool overCarrot;
@@ -67,7 +67,7 @@ public class Interactable : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (overNoBox && currentNoBox.GetComponentInParent<PaperStamp>().paperInPlace)
+                if (overNoBox && currentNoBox.GetComponentInParent<PaperScript>().paperInPlace)
                 {
                     //No
                     currentNoBox.GetComponentInParent<PaperScript>().No();
@@ -77,7 +77,7 @@ public class Interactable : MonoBehaviour
                     overNoBox = false;
                     currentNoBox = null;
                 }
-                if (overYesBox && currentYesBox.GetComponentInParent<PaperStamp>().paperInPlace)
+                if (overYesBox && currentYesBox.GetComponentInParent<PaperScript>().paperInPlace)
                 {
                     //Yes
                     currentYesBox.GetComponentInParent<PaperScript>().Yes();

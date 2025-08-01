@@ -10,10 +10,14 @@ public class DirtSpawner : MonoBehaviour
     public int dirtToSpawn;
     public GameObject dirt;
     public int minHealth, maxHealth;
+    bool dirtSpawned;
+    public List<GameObject> dirts;
+    public Awake managerScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        dirtSpawned = false;
         tilemap = gameObject.GetComponent<Tilemap>();
         availablePlaces = new List<Vector3>();
 
@@ -26,6 +30,16 @@ public class DirtSpawner : MonoBehaviour
             }
 
             availablePlaces.Add(location);
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(dirts.Count == 0 && dirtSpawned)
+        {
+            dirtSpawned = false;
+            Debug.Log("Win");
+            managerScript.cleaned = true;
         }
     }
 
@@ -48,7 +62,11 @@ public class DirtSpawner : MonoBehaviour
         {
             GameObject currentDirt = GameObject.Instantiate(dirt);
             currentDirt.transform.position = location;
+            currentDirt.transform.parent = transform;
             currentDirt.GetComponent<ToothDirt>().health = Random.Range(minHealth, maxHealth);
+            dirts.Add(currentDirt);
         }
+        
+        dirtSpawned = true;
     }
 }

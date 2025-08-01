@@ -224,6 +224,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 655074775282610486, guid: 8a71ed5f65dd4904f82ccf4542da6465, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655074775282610486, guid: 8a71ed5f65dd4904f82ccf4542da6465, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655074775282610486, guid: 8a71ed5f65dd4904f82ccf4542da6465, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2729653492733526108, guid: 8a71ed5f65dd4904f82ccf4542da6465, type: 3}
       propertyPath: m_RootOrder
       value: 0

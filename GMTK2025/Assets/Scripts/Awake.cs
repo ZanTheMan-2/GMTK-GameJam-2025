@@ -13,6 +13,9 @@ public class Awake : MonoBehaviour
     public GameObject cloth, cursor;
     public Dialog officemanger;
 
+    //Driving
+    public GameObject driveScene, cookScene, driveCam, cookCam;
+
     public bool cleaned = false; // when this is true transition does
 
     private void Start()
@@ -83,5 +86,26 @@ public class Awake : MonoBehaviour
                 cursor.SetActive(true);
             }
         }
+    }
+
+    public void DriveEnd()
+    {
+        StartCoroutine(DriveEndWaiter());
+    }
+
+    IEnumerator DriveEndWaiter()
+    {
+        driveScene.gameObject.SetActive(false);
+        driveCam.gameObject.SetActive(false);
+        cookScene.gameObject.SetActive(true);
+        cookCam.gameObject.SetActive(true);
+
+        for (float i = 2; i > 0; i -= 0.05f) // open eyes
+        {
+            yield return new WaitForSeconds(0.05f);
+            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
+
+        blank.SetActive(false);
     }
 }
