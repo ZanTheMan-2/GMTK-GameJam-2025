@@ -44,6 +44,8 @@ public class CursorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!manager.canCursor) return;
+
         if(handOnWheel && Input.GetMouseButtonDown(0) && !overInteractable)
         {
             Cursor.lockState = CursorLockMode.None;
