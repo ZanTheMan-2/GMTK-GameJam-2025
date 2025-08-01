@@ -2357,10 +2357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344dc449ab5d54dd0a6aa030aff0226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blank: {fileID: 2010694900}
-  driveScene: {fileID: 1510582710}
-  coockSceene: {fileID: 2116791342}
-  cam: {fileID: 2080333438}
 --- !u!1 &881231181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,19 +2654,19 @@ MonoBehaviour:
   - Simple, right!
   - 'NOW, GET TO WORK BEFORE YOU ARE FIRED!  '
   speach:
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 9c031911524f64770ba126043c7402d7, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 9c031911524f64770ba126043c7402d7, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 9c031911524f64770ba126043c7402d7, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
-  - {fileID: 8300000, guid: 77a915008254845afb5ede45b43db92c, type: 3}
+  - {fileID: 8300000, guid: 2d6c40b000c32834ca097313c4711b9e, type: 3}
+  - {fileID: 8300000, guid: 5bc773220469e284081bf2b8c5733c84, type: 3}
+  - {fileID: 8300000, guid: 362c9b53e5f33074984b41e741f5d6af, type: 3}
+  - {fileID: 8300000, guid: 8e5f076caad27ff41b6f81a56f7bb2a8, type: 3}
+  - {fileID: 8300000, guid: bfd4e5d3df3d65e45bbbccd87fcf845e, type: 3}
+  - {fileID: 8300000, guid: 78487ebe01e4cc940bc7a4aaea0f6711, type: 3}
+  - {fileID: 8300000, guid: a30ec03b0f4485c479086f3398f093f6, type: 3}
+  - {fileID: 8300000, guid: 6c78dbe81a0c586498f2b87015212f25, type: 3}
+  - {fileID: 8300000, guid: dd29da2230b323b41ac822c566603008, type: 3}
+  - {fileID: 8300000, guid: e78d6c0f6ab57ac4da85e6903b86e781, type: 3}
+  - {fileID: 8300000, guid: e42a481743693c4478ae3c6d83ba9e6e, type: 3}
+  - {fileID: 8300000, guid: bbaaf0a3d4ca5484c9e5ec12e3b690b3, type: 3}
+  - {fileID: 8300000, guid: 30f23596558c2684faad3039e1046990, type: 3}
   sprites:
   - {fileID: 21300000, guid: 54df3b65bb9734376b2faa02219d26c5, type: 3}
   - {fileID: 21300000, guid: ccf1df8b8b6894e08b669191940fc200, type: 3}
