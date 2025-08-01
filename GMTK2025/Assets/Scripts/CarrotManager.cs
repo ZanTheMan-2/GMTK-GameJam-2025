@@ -10,6 +10,11 @@ public class CarrotManager : MonoBehaviour
     public UnityEngine.Sprite[] sprites;
     private bool ready = true;
 
+    private void Start()
+    {
+        BedScene.gameObject.SetActive(false);
+    }
+
     public void DividerDestroyed(int dividerNumber)
     {
         dividers[dividerNumber - 1].GetComponent<SpriteRenderer>().enabled = false;

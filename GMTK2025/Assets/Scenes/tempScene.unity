@@ -1029,7 +1029,7 @@ Animator:
   m_GameObject: {fileID: 644209410}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b87cad82fe5bb401eb6432205c4ff523, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5db62e9bafd614a74a4dd6e28614ac1f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1518,7 +1518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1314802002
 Transform:
   m_ObjectHideFlags: 0
@@ -1552,6 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topBlink: {fileID: 644209410}
   bottomBlink: {fileID: 1472284116}
+  text: {fileID: 1424129160}
 --- !u!1 &1424129160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1824,7 +1825,7 @@ Animator:
   m_GameObject: {fileID: 1472284116}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e7dc6b3d950c415e85ce0a222d41980, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2d976444202146ebaa08938df558f8b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
