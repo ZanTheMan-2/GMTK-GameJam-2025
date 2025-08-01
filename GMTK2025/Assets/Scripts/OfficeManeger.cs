@@ -5,7 +5,7 @@ using UnityEngine;
 public class OfficeManeger : MonoBehaviour
 {
     public Dialog talked;
-    public GameObject currentBG, newBG, textBox, blank, paperTest;
+    public GameObject currentBG, newBG, textBox, blank, paperTest, paperCanva;
     private bool ran = true;
 
 
@@ -17,6 +17,7 @@ public class OfficeManeger : MonoBehaviour
         blank.gameObject.SetActive(false);
         blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
         paperTest.gameObject.SetActive(false);
+        paperCanva.gameObject.SetActive(false);
     }
     void Update()
     {
@@ -43,6 +44,8 @@ public class OfficeManeger : MonoBehaviour
             blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
             Debug.Log(i);
         }
+        paperCanva.gameObject.SetActive(true);
+
     }
 }
 

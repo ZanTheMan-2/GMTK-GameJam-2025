@@ -7,7 +7,7 @@ public class PaperScript : MonoBehaviour
 {
     public int moneyAmount, sanityAmount;
 
-    public TMP_Text mainText, bonusText;
+    public TMP_Text mainText, bonusText, budgetTXT, sanityTXT;
     public string[] mainString;
     public int[] amountString;
     public int amountCost;
@@ -25,6 +25,8 @@ public class PaperScript : MonoBehaviour
         mainText.text = mainString[paperAmount];
         bonusText.text = amountString[paperAmount].ToString();
         amountCost = amountString[paperAmount];
+        budgetTXT.text = "Budget: " + moneyAmount.ToString();
+        sanityTXT.text = "Sanity: " + sanityAmount.ToString();
 
         if (Input.GetKeyDown(KeyCode.L)) paperChange();
         if (paperAmount == 8) StartCoroutine(win(officeScene, drivingScene));
@@ -49,6 +51,7 @@ public class PaperScript : MonoBehaviour
 
     public void Yes()
     {
+        if((moneyAmount + moneyGainIfYes[paperAmount]) > 0) { 
         //Add money
         moneyAmount += moneyGainIfYes[paperAmount];
         //Add sanity
@@ -56,6 +59,7 @@ public class PaperScript : MonoBehaviour
         
         Debug.Log("Oooo you're insane");
         paperInPlace = false;
+            }
     }
 
     public void No()
