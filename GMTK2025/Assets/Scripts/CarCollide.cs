@@ -15,7 +15,8 @@ public class CarCollide : MonoBehaviour
         }
         if (other.CompareTag("LoseBox"))
         {
-            //Lose
+            Debug.Log("lose");
+            manager.DriveDeath();
         }
     }
 

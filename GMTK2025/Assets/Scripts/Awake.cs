@@ -7,7 +7,7 @@ public class Awake : MonoBehaviour
 {
     public bool canCursor;
     public TMP_Text text;
-    public GameObject blink1, blink2, blank;
+    public GameObject blink1, blink2, blank, blank2, driveBlank;
     public GameObject bedroomBG, bathroomBG, bathroom, office;
     public DirtSpawner dirtSpawner;
     bool dirtSpawned;
@@ -15,7 +15,10 @@ public class Awake : MonoBehaviour
     public Dialog officemanger;
 
     //Driving
-    public GameObject driveScene, cookScene, driveCam, cookCam;
+    public GameObject driveScene, cookScene, driveCam, driveCam3D, cookCam;
+
+    //Office
+    public GameObject officeText, officeScene, paperCanva;
 
     public bool cleaned = false; // when this is true transition does
 
@@ -49,7 +52,7 @@ public class Awake : MonoBehaviour
         if (cleaned == true)   // goes to office
         {
             cleaned = false;
-            StartCoroutine(transitionWaiter(bathroom, office));
+            StartCoroutine(transitionWaiterToOffice());
             officemanger.enabled = true;
         }
     }
@@ -88,6 +91,33 @@ public class Awake : MonoBehaviour
         canCursor = true;
     }
 
+    IEnumerator transitionWaiterToOffice()
+    {
+        blank2.SetActive(true);
+        canCursor = false;
+
+        for (float i = 0; i < 2; i += 0.05f) // fades black to transition
+        {
+            yield return new WaitForSeconds(0.05f);
+            blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
+
+        bathroom.gameObject.SetActive(false);
+        office.gameObject.SetActive(true);
+        officeText.SetActive(false);
+        officemanger.gameObject.SetActive(false);
+
+        for (float i = 2; i > 0; i -= 0.05f) // open eyes
+        {
+            yield return new WaitForSeconds(0.05f);
+            blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
+
+        blank2.SetActive(false);
+        officeText.SetActive(true);
+        officemanger.gameObject.SetActive(true);
+    }
+
     public void DriveEnd()
     {
         StartCoroutine(DriveEndWaiter());
@@ -95,26 +125,99 @@ public class Awake : MonoBehaviour
 
     IEnumerator DriveEndWaiter()
     {
-        Debug.Log("timer started");
-        blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
-        blank.gameObject.SetActive(true);
+        driveBlank.gameObject.SetActive(true);
+        driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
         for (float i = 0; i < 2; i += 0.05f) // fades black to transition
         {
-            Debug.Log("Fading" +i);
             yield return new WaitForSeconds(0.05f);
-            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+            driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
+
+        blank2.SetActive(true);
+        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         driveScene.gameObject.SetActive(false);
-        cookScene.gameObject.SetActive(true);
+        driveCam.gameObject.SetActive(false);
         cookCam.gameObject.SetActive(true);
+        cookScene.gameObject.SetActive(true);
 
         for (float i = 2; i > 0; i -= 0.05f) // open eyes
         {
             yield return new WaitForSeconds(0.05f);
-            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+            blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
 
-        blank.SetActive(false);
+        driveBlank.SetActive(false);
+        blank2.SetActive(false);
         canCursor = true;
+    }
+
+    public void OfficeWin()
+    {
+        blank2.gameObject.SetActive(true);
+        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
+        StartCoroutine(OfficeBlink());
+    }
+
+    IEnumerator OfficeBlink()
+    {
+        canCursor = false;
+        paperCanva.SetActive(false);
+        //arms.gameObject.SetActive(false);
+
+        for (float i = 0; i < 2; i += 0.05f) // fades black to transition
+        {
+            yield return new WaitForSeconds(0.05f);
+            blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
+
+        driveCam.SetActive(true);
+        driveBlank.SetActive(true);
+        driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        cookCam.gameObject.SetActive(false);
+        blank2.SetActive(false);
+        officeScene.gameObject.SetActive(false);
+        driveScene.gameObject.SetActive(true);
+
+        for (float i = 2; i > 0; i -= 0.05f) // open eyes
+        {
+            yield return new WaitForSeconds(0.05f);
+            driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
+
+        canCursor = true;
+        driveBlank.SetActive(false);
+    }
+
+    public void DriveDeath()
+    {
+        StartCoroutine(DriveDeathWaiter());
+    }
+
+    IEnumerator DriveDeathWaiter()
+    {
+        driveBlank.gameObject.SetActive(true);
+        driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
+        for (float i = 0; i < 2; i += 0.05f) // fades black to transition
+        {
+            yield return new WaitForSeconds(0.05f);
+            driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
+
+        blank2.SetActive(true);
+        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        driveScene.gameObject.SetActive(false);
+        driveCam.gameObject.SetActive(false);
+        cookCam.gameObject.SetActive(true);
+        //Set death scene to true
+
+        for (float i = 2; i > 0; i -= 0.05f) // open eyes
+        {
+            yield return new WaitForSeconds(0.05f);
+            blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+        }
+
+        driveBlank.SetActive(false);
+        blank2.SetActive(false);
+        //canCursor = true;
     }
 }

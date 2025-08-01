@@ -5,7 +5,8 @@ using TMPro;
 
 public class PaperScript : MonoBehaviour
 {
-    public int moneyAmount, sanityAmount;
+    public Awake manager;
+    public int moneyAmount, sanityAmount, initMoney, initSanity;
 
     public TMP_Text mainText, bonusText, budgetTXT, sanityTXT;
     public string[] mainString;
@@ -20,8 +21,16 @@ public class PaperScript : MonoBehaviour
 
     public int[] moneyGainIfYes, sanityGainIfYes, moneyGainIfNo, sanityGainIfNo;
 
+    private void Start()
+    {
+        moneyAmount = initMoney;
+        sanityAmount = initSanity;
+    }
+
     private void Update()
     {
+        sanityAmount = Mathf.Clamp(sanityAmount, 0, 100);
+
         mainText.text = mainString[paperAmount];
         bonusText.text = amountString[paperAmount].ToString();
         amountCost = amountString[paperAmount];
@@ -29,7 +38,7 @@ public class PaperScript : MonoBehaviour
         sanityTXT.text = "Sanity: " + sanityAmount.ToString();
 
         if (Input.GetKeyDown(KeyCode.L)) paperChange();
-        //if (paperAmount == 8) StartCoroutine(win(officeScene, drivingScene));
+        if (paperAmount == mainString.Length) manager.OfficeWin();
     }
 
     public void paperChange()
@@ -37,9 +46,7 @@ public class PaperScript : MonoBehaviour
         if (paperAmount < mainString.Length - 1) paperAmount += 1;
         else
         {
-            StartCoroutine(win(officeScene, drivingScene));
-            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
-            blank.gameObject.SetActive(true);
+            manager.OfficeWin();
         }
     }
 
@@ -51,17 +58,26 @@ public class PaperScript : MonoBehaviour
         putDownSpot.GetComponent<Collider2D>().enabled = true;
     }
 
-    public void Yes()
+    public void Yes(Transform stamp)
     {
-        if((moneyAmount + moneyGainIfYes[paperAmount]) > 0) { 
-        //Add money
-        moneyAmount += moneyGainIfYes[paperAmount];
-        //Add sanity
-        sanityAmount += sanityGainIfYes[paperAmount];
-        
-        Debug.Log("Oooo you're insane");
-        paperInPlace = false;
-            }
+        if ((moneyAmount + moneyGainIfYes[paperAmount]) >= 0)
+        {
+            //Add money
+            moneyAmount += moneyGainIfYes[paperAmount];
+            //Add sanity
+            sanityAmount += sanityGainIfYes[paperAmount];
+
+            paperInPlace = false;
+            GetComponentInParent<Animator>().SetTrigger("paperRight");
+            stamp.GetComponent<Interactable>().paperInPlace = false;
+            stamp.GetComponent<Interactable>().currentYesBox = null;
+
+        }
+        else
+        {
+            Debug.Log("too poor");
+            return;
+        }
     }
 
     public void No()
@@ -71,28 +87,6 @@ public class PaperScript : MonoBehaviour
         //Add sanity
         sanityAmount += sanityGainIfNo[paperAmount];
 
-        Debug.Log("Oooo you're poor");
         paperInPlace = false;
-    }
-
-
-    IEnumerator win(GameObject currentBG, GameObject newBG)
-    {   
-        for (float i = 0; i < 2; i += 0.05f) // fades black to transition
-        {
-            yield return new WaitForSeconds(0.05f);
-            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
-        }
-
-        cam.gameObject.SetActive(false);
-        newBG.gameObject.SetActive(true);
-        arms.gameObject.SetActive(false);
-
-        for (float i = 2; i > 0; i -= 0.05f) // open eyes
-        {
-            yield return new WaitForSeconds(0.05f);
-            blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
-        }
-        currentBG.gameObject.SetActive(false);
     }
 }

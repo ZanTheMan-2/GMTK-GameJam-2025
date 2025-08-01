@@ -9,11 +9,20 @@ public class Beer : MonoBehaviour
     public float drinkAmount, initValue,     refillSpeed, thirstThreshold, thirstMultiplier;
     public Car carScript;
     public Animator Shake2D;
+    public bool beerActive;
 
     // Start is called before the first frame update
     void Start()
     {
         slider.value = initValue;
+    }
+
+    private void Awake()
+    {
+        if (!beerActive)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

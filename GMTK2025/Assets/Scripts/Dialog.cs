@@ -21,7 +21,7 @@ public class Dialog : MonoBehaviour
     public GameObject textWindow;
 
 
-    public void Start()
+    public void Awake()
     {
         source = this.GetComponent<AudioSource>();
 
@@ -45,7 +45,7 @@ public class Dialog : MonoBehaviour
             if (talking)
             {
                 source.clip = speach[t];
-                source.PlayOneShot(source.clip);
+                source.PlayOneShot(source.clip);    
                 source.Play();
                 talking = false;
             }

@@ -13,6 +13,7 @@ public class Car : MonoBehaviour
     public Collider2D normalCollider, bigCollider;
     public float beerMultiplier;
     float multipliedDelay;
+    bool driving;
 
     [Header("Sprites")]
     public SpriteRenderer spriteRenderer;
@@ -21,6 +22,7 @@ public class Car : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        driving = false;
         rotationDirection = Random.Range(0, 1);
         StartCoroutine(Drift());
         currentRotation = 0;
@@ -30,6 +32,8 @@ public class Car : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!driving) return;
+
         if (rotationDirection == 0) rotationDirection = -1;
 
         currentRotation += rotationVelocity * rotationDirection * Time.deltaTime;
@@ -66,6 +70,10 @@ public class Car : MonoBehaviour
             spriteRenderer.sprite = handWheel;
             normalCollider.enabled = false;
             bigCollider.enabled = true;
+            if (!driving)
+            {
+                driving = true;
+            }
         }
         else
         {
