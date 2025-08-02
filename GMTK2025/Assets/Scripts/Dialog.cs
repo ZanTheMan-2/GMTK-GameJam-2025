@@ -27,7 +27,7 @@ public class Dialog : MonoBehaviour
     }
     public void Update()
     {
-        if (t <= dialog.Length)
+        if (t < dialog.Length - 1)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -50,10 +50,13 @@ public class Dialog : MonoBehaviour
         }
         else
         {
-            doneTalking = true;
-            this.enabled = false;
-            spriteRenderer.enabled = false;
-            Debug.Log("Array problem");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                doneTalking = true;
+                this.enabled = false;
+                spriteRenderer.enabled = false;
+                Debug.Log("Array problem");
+            }
         }
     }
 }

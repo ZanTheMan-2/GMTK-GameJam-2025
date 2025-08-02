@@ -193,22 +193,30 @@ public class Awake : MonoBehaviour
         officeScene.gameObject.SetActive(false);
         driveScene.gameObject.SetActive(true);
 
-        for (float i = 2; i > 0; i -= 0.05f) // open eyes
+        if (zangySource.clip != null)
         {
-            yield return new WaitForSeconds(0.05f);
-            driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
-            GetComponent<AudioSource>().volume = i / 2;
+            for (float i = 2; i > 0; i -= 0.05f) // open eyes
+            {
+                yield return new WaitForSeconds(0.05f);
+                driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, i);
+                GetComponent<AudioSource>().volume = i / 2;
+            }
+            GetComponent<AudioSource>().Pause();
+            zangySource.Play();
+            canCursor = true;
+            driveBlank.SetActive(false);
+            yield return new WaitForSeconds(zangySource.clip.length);
+            GetComponent<AudioSource>().UnPause();
+            for (float i = 0; i < 2; i += 0.05f) // open eyes
+            {
+                yield return new WaitForSeconds(0.05f);
+                GetComponent<AudioSource>().volume = i / 2;
+            }
         }
-        GetComponent<AudioSource>().Pause();
-        zangySource.Play();
-        canCursor = true;
-        driveBlank.SetActive(false);
-        yield return new WaitForSeconds(zangySource.clip.length);
-        GetComponent<AudioSource>().UnPause();
-        for (float i = 0; i < 2; i += 0.05f) // open eyes
+        else
         {
-            yield return new WaitForSeconds(0.05f);
-            GetComponent<AudioSource>().volume = i / 2;
+            canCursor = true;
+            driveBlank.SetActive(false);
         }
     }
 

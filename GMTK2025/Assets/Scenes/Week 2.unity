@@ -26006,7 +26006,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 54df3b65bb9734376b2faa02219d26c5, type: 3}
+  m_Sprite: {fileID: 7482667652216324306, guid: a765a801946ef5c418a03399be6900ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -39715,51 +39715,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogText: {fileID: 1717844590}
   dialog:
-  - Oh, hey.
-  - 'So you must be the new hire, right? '
-  - 'Well, don''t you worry; your job is so easy even a monkey can do what you are
-    about to do. '
-  - 'This means you are replaceable, and one slip-up means you are out of here! '
-  - 'So listen up because I won''t be telling you what to do twice.  '
-  - 'Once you hit your table, you will notice two things: one is the pile of papers,
-    and the other is the stamp. '
-  - 'On the paper are some things people want COMPANY INC to do.  '
-  - 'The problem is the budget, so you will need to prioritise. '
-  - 'Some things will make the company lose money, while others will allow the company
-    to gain money. '
-  - 'After you have decided if you want to pass or fail the idea, you will take the
-    stamp and stamp the respective box. '
-  - 'Y for yes, and N for no.  '
-  - Simple, right!
-  - 'NOW, GET TO WORK BEFORE YOU ARE FIRED!  '
+  - ...
+  - But nobody came.
   speach:
-  - {fileID: 8300000, guid: 8be511f5be4deba4498bbc9b5d217a30, type: 3}
-  - {fileID: 8300000, guid: 73e51de63733b9f44a7c4524c540e854, type: 3}
-  - {fileID: 8300000, guid: 6b9036d55b3c4ad4ca70a82dcdbc145d, type: 3}
-  - {fileID: 8300000, guid: c2020f79a4f8f8b4285446b4d0f3bd22, type: 3}
-  - {fileID: 8300000, guid: 8e8a1b38532f08541955ef974d152781, type: 3}
-  - {fileID: 8300000, guid: cd2323e0464b241449ca1144da80be10, type: 3}
-  - {fileID: 8300000, guid: ec2bc4cf4105479489bed413b5ce0c75, type: 3}
-  - {fileID: 8300000, guid: 53a93c42ea958024a8fa5405c8e53e64, type: 3}
-  - {fileID: 8300000, guid: 524ca47b702260743a0698e39df5b836, type: 3}
-  - {fileID: 8300000, guid: 9f014a7ffb717fb4bb01254089613df6, type: 3}
-  - {fileID: 8300000, guid: 8c21975cd8701834e98f5606c3dd9c5f, type: 3}
-  - {fileID: 8300000, guid: be082c9cc4c0fa348a9b7e6578306227, type: 3}
-  - {fileID: 8300000, guid: f55a49c13f1fe584b83df5eea077869e, type: 3}
+  - {fileID: 8300000, guid: 1598c983e95817d48a329960a309e8c0, type: 3}
+  - {fileID: 8300000, guid: 1598c983e95817d48a329960a309e8c0, type: 3}
   sprites:
-  - {fileID: 21300000, guid: 54df3b65bb9734376b2faa02219d26c5, type: 3}
-  - {fileID: 21300000, guid: ccf1df8b8b6894e08b669191940fc200, type: 3}
-  - {fileID: 21300000, guid: 38948aae9b7334fc8baf51f120989572, type: 3}
-  - {fileID: 21300000, guid: 5abdc9f5c407844df81020c8477e157e, type: 3}
-  - {fileID: 21300000, guid: f4d36455353ba4c6088e82eb0c482afa, type: 3}
-  - {fileID: 21300000, guid: a04ab71b2aa654da6ac96e6df2a8cb58, type: 3}
-  - {fileID: 21300000, guid: 9d043bb5dc5e644ea88971d347f8f95d, type: 3}
-  - {fileID: 21300000, guid: f8667999bff394f9e985a0b1f0e53481, type: 3}
-  - {fileID: 21300000, guid: 66eb1b6f2bd9d49e69c48d377f683396, type: 3}
-  - {fileID: 21300000, guid: 5a655dcd5d26a44c0b38f10df09ca15c, type: 3}
-  - {fileID: 21300000, guid: c0b1f8883314d4eb0ad3d3a11268a885, type: 3}
-  - {fileID: 21300000, guid: 084438ac9538b418eade4cbceb0df5fc, type: 3}
-  - {fileID: 21300000, guid: d15d92e9ab5944b1087f7a53536329bb, type: 3}
+  - {fileID: 7482667652216324306, guid: a765a801946ef5c418a03399be6900ac, type: 3}
+  - {fileID: 7482667652216324306, guid: a765a801946ef5c418a03399be6900ac, type: 3}
   spriteRenderer: {fileID: 598465795}
   isTalking: 0
   doneTalking: 0
@@ -49674,7 +49637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456b3c79152f1473e9c8cacab5fcf788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickies: {fileID: 441834063}
   canCursor: 0
   text: {fileID: 690490904}
   carCrashTXT: {fileID: 477814494}
@@ -78913,6 +78875,90 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1762243464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1762243465}
+  - component: {fileID: 1762243466}
+  m_Layer: 6
+  m_Name: Square (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1762243465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762243464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.176, z: 0.215}
+  m_LocalScale: {x: 435.9, y: 0.4, z: 435.9}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2729653493097600347}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1762243466
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762243464}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1763032092
 GameObject:
   m_ObjectHideFlags: 0
@@ -100764,7 +100810,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7e112d3a8fef249fe9ea7377618e7042, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c1ad072e130cb5947bcae664c3d9e175, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -100962,6 +101008,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1106119019}
+  - {fileID: 1762243465}
   m_Father: {fileID: 2729653493875308346}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
