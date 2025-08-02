@@ -5,6 +5,8 @@ using TMPro;
 
 public class Awake : MonoBehaviour
 {
+    public GameObject weekText, sleepText;
+    bool ableToSpace;
     bool spaceClicked;
     public bool canCursor;
     public TMP_Text text, carCrashTXT;
@@ -25,6 +27,9 @@ public class Awake : MonoBehaviour
 
     private void Start()
     {
+        sleepText.SetActive(false);
+        weekText.SetActive(false);
+        ableToSpace = false;
         spaceClicked = false;
         canCursor = false;
         blank.gameObject.SetActive(true);
@@ -43,13 +48,32 @@ public class Awake : MonoBehaviour
         Color TXTcolor = carCrashTXT.color;
         TXTcolor.a = 0;
         carCrashTXT.color = TXTcolor;
+        StartCoroutine(weekTextVisible());
+    }
+
+    IEnumerator weekTextVisible()
+    {
+        weekText.SetActive(true);
+        TMP_Text weekTXT = weekText.GetComponentInChildren<TMP_Text>();
+        for (float i = 0; i < 1; i += 0.05f) // text fade
+        {
+            yield return new WaitForSeconds(0.05f);
+            Color TXTcolor = weekTXT.color;
+            TXTcolor.a = i;
+            weekTXT.color = TXTcolor;
+        }
+        yield return new WaitForSeconds(0.5f);
+        sleepText.SetActive(true);
+        ableToSpace = true;
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying && !spaceClicked)
+        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying && !spaceClicked && ableToSpace)
         {
             spaceClicked = true;
+            weekText.SetActive(false);
+            sleepText.SetActive(false);
             blank.gameObject.SetActive(false);
             blink1.gameObject.SetActive(true);
             blink2.gameObject.SetActive(true);
