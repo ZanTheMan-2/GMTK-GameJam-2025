@@ -26,13 +26,14 @@ public class CarrotManager : MonoBehaviour
         {
             dividers[dividerNumber - 2].GetComponent<SpriteRenderer>().enabled = true;
             dividers[dividerNumber - 2].GetComponent<Collider2D>().enabled = true;
+            sound.Play();
         }
         else
         {
             if (ready == true)
             {
                 ready = false;
-                sound.Play();
+                sound.Play();   
                 StartCoroutine(transitionWaiter(carrotScene, BedScene));
                 blank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
                 blank.gameObject.SetActive(true);
