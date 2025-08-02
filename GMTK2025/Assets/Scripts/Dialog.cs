@@ -24,38 +24,37 @@ public class Dialog : MonoBehaviour
     public void Awake()
     {
         source = this.GetComponent<AudioSource>();
+
+
     }
     public void Update()
     {
-       
-            if (t <= dialog.Length)
+        try
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    t += 1;
-                    talking = true;
-                    source.Stop();
-                }
-                dialogText.text = dialog[t];
-                UnityEngine.Sprite sprity = sprites[t];
-                spriteRenderer.sprite = sprity;
-
-
-                if (talking)
-                {
-                    source.clip = speach[t];
-                    source.PlayOneShot(source.clip);
-                    source.Play();
-                    talking = false;
-                }
+                t += 1;
+                talking = true;
+                source.Stop();
             }
-            else
-            {
-                doneTalking = true;
-                this.enabled = false;
-                spriteRenderer.enabled = false;
-                 Debug.Log("Array problem");
+            dialogText.text = dialog[t];
+            UnityEngine.Sprite sprity = sprites[t];
+            spriteRenderer.sprite = sprity;
 
+
+            if (talking)
+            {
+                source.clip = speach[t];
+                source.PlayOneShot(source.clip);    
+                source.Play();
+                talking = false;
+            }
+        }catch 
+        {
+            Debug.Log("Array problem");
+            doneTalking = true;
+            this.enabled = false;
+            spriteRenderer.enabled = false;
         }
     }
 }
