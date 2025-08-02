@@ -25780,7 +25780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Wash your face, by  holding down your mouse
+  m_text: Why?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8abeb662c80b045339f9b23a73c80b2f, type: 2}
   m_sharedMaterial: {fileID: 3667364755698251663, guid: 8abeb662c80b045339f9b23a73c80b2f, type: 2}
@@ -49741,7 +49741,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bac02a847fca2ca43ae3c59005a26e91, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d945a67e03f80ab49bf036a335ecd220, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -69041,13 +69041,13 @@ MonoBehaviour:
   budgetTXT: {fileID: 1721476146}
   sanityTXT: {fileID: 1738789202}
   mainString:
-  - Reduce the wages of employees.
-  - 'Purchase more paper and ink for the company.   '
-  - Hire more cleaners for the company
-  - Remove the suggestion box
-  - 'Chase away the homeless people in the vicinity of COMPANY INC  '
-  - Build an indoor garden
-  amountString: 0a000000f6fffffff6ffffff0a0000000f000000f6ffffff
+  - Produce propaganda
+  - Raise electricity prices
+  - Experiment with human-based food solutions
+  - Dump waste into the local water supply
+  - Engage in human testing
+  - Save starving children
+  amountString: 0a0000000a0000000f0000000a0000000f000000ceffffff
   amountCost: 0
   blank: {fileID: 2010694900}
   officeScene: {fileID: 581827063}
@@ -69058,10 +69058,10 @@ MonoBehaviour:
   putDownSpot: {fileID: 1742771974}
   paperParent: {fileID: 476265991}
   paperInPlace: 0
-  moneyGainIfYes: 0a000000f6fffffff6ffffff0a0000000f000000f6ffffff
-  sanityGainIfYes: f6ffffff0000000005000000f6fffffff6ffffff05000000
+  moneyGainIfYes: 0a0000000a0000000f0000000a0000000f000000ceffffff
+  sanityGainIfYes: f6fffffff6ffffffecfffffff6fffffff6ffffff0a000000
   moneyGainIfNo: 000000000000000000000000000000000000000000000000
-  sanityGainIfNo: 0500000000000000f6ffffff0500000005000000f6ffffff
+  sanityGainIfNo: 05000000050000000a0000000500000005000000ecffffff
   audioSource: {fileID: 1203795391}
 --- !u!50 &1545712898
 Rigidbody2D:
@@ -71720,7 +71720,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 0c759ecafbf935043a56d60c46efb70f, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 855674b877c3b1142b745e73ce3146a5, type: 2}
 --- !u!4 &1607854192
 Transform:
   m_ObjectHideFlags: 0
@@ -101709,7 +101709,7 @@ MonoBehaviour:
   thirstMultiplier: 2
   carScript: {fileID: 2729653492157013455}
   Shake2D: {fileID: 2729653493173897210}
-  beerActive: 0
+  beerActive: 1
   beerVolume: {fileID: 863460742}
 --- !u!212 &2729653494151568769
 SpriteRenderer:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sleepy : MonoBehaviour
 {
@@ -11,12 +12,7 @@ public class Sleepy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            dayManeger.days += 1;
-            text.gameObject.SetActive(false);
-            topBlink.gameObject.SetActive(true);
-            bottomBlink.gameObject.SetActive(true);
-
-            StartCoroutine(transitionWaiter(sleepScene, wakeupScene));
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
