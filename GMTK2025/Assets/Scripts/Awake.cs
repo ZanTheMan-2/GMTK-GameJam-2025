@@ -101,7 +101,10 @@ public class Awake : MonoBehaviour
 
     IEnumerator transitionWaiterToOffice()
     {
+        yield return new WaitForSeconds(1.5f);
+
         blank2.SetActive(true);
+        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
         canCursor = false;
 
         for (float i = 0; i < 2; i += 0.05f) // fades black to transition
@@ -147,6 +150,7 @@ public class Awake : MonoBehaviour
         blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         driveScene.gameObject.SetActive(false);
         driveCam.gameObject.SetActive(false);
+        driveCam3D.SetActive(false);
         cookCam.gameObject.SetActive(true);
         cookScene.gameObject.SetActive(true);
 
@@ -181,6 +185,7 @@ public class Awake : MonoBehaviour
         }
 
         driveCam.SetActive(true);
+        driveCam3D.SetActive(true);
         driveBlank.SetActive(true);
         driveBlank.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         cookCam.gameObject.SetActive(false);
@@ -242,6 +247,7 @@ public class Awake : MonoBehaviour
         blank2.SetActive(true);
         blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
         driveCam.gameObject.SetActive(false);
+        driveCam3D.SetActive(false);
         cookCam.gameObject.SetActive(true);
         //Set death scene to true
         cookScene.SetActive(true);

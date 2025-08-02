@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Rendering;
 
 public class PaperScript : MonoBehaviour
 {
     public Awake manager;
+    public Volume sanityVolume;
+    public float sanityForVolume;
     public int moneyAmount, sanityAmount, initMoney, initSanity;
+    float sanityAmountFloat;
 
     public TMP_Text mainText, bonusText, budgetTXT, sanityTXT;
     public string[] mainString;
@@ -31,6 +35,18 @@ public class PaperScript : MonoBehaviour
     private void Update()
     {
         sanityAmount = Mathf.Clamp(sanityAmount, 0, 100);
+        sanityAmountFloat = sanityAmount;
+        if (sanityAmount > 0)
+        {
+            sanityForVolume = sanityAmountFloat / 100;
+            Debug.Log("meow");
+        }
+        else
+        {
+            sanityForVolume = 0;
+            Debug.Log("Woof");
+        }
+        sanityVolume.weight = 1 - sanityForVolume;
 
         mainText.text = mainString[paperAmount];
         bonusText.text = amountString[paperAmount].ToString();
