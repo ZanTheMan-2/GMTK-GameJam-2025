@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AwakeEnd : MonoBehaviour
 {
+    bool spaceClicked1, spaceClicked2;
     public bool canCursor;
     public GameObject blink1, blink2, blank, blank2;
     public GameObject bedroomBG, bridgeBG, waterBG;
@@ -14,6 +15,8 @@ public class AwakeEnd : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spaceClicked1 = false;
+        spaceClicked2 = false;
         Cursor.visible = false;
         canCursor = false;
         blank.gameObject.SetActive(true);
@@ -28,8 +31,9 @@ public class AwakeEnd : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying)
+        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying && !spaceClicked1)
         {
+            spaceClicked1 = true;
             sleepText.SetActive(false);
             blank.gameObject.SetActive(false);
             blink1.gameObject.SetActive(true);
@@ -40,8 +44,9 @@ public class AwakeEnd : MonoBehaviour
             GetComponent<AudioSource>().Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && onBridge)
+        if (Input.GetKeyDown(KeyCode.Space) && onBridge && !spaceClicked2)
         {
+            spaceClicked2 = true;
             StartCoroutine(bridgeWaiter(bridgeBG, waterBG));
         }
     }

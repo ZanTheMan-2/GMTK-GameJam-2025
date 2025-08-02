@@ -5,6 +5,7 @@ using TMPro;
 
 public class Awake : MonoBehaviour
 {
+    bool spaceClicked;
     public bool canCursor;
     public TMP_Text text, carCrashTXT;
     public GameObject blink1, blink2, blank, blank2, driveBlank;
@@ -24,6 +25,7 @@ public class Awake : MonoBehaviour
 
     private void Start()
     {
+        spaceClicked = false;
         canCursor = false;
         blank.gameObject.SetActive(true);
         blink1.gameObject.SetActive(false);
@@ -45,8 +47,9 @@ public class Awake : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying)
+        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying && !spaceClicked)
         {
+            spaceClicked = true;
             blank.gameObject.SetActive(false);
             blink1.gameObject.SetActive(true);
             blink2.gameObject.SetActive(true);
