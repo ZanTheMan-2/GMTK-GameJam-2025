@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Awake : MonoBehaviour
 {
@@ -27,28 +28,35 @@ public class Awake : MonoBehaviour
 
     private void Start()
     {
-        sleepText.SetActive(false);
-        weekText.SetActive(false);
-        ableToSpace = false;
-        spaceClicked = false;
-        canCursor = false;
-        blank.gameObject.SetActive(true);
-        blink1.gameObject.SetActive(false);
-        blink2.gameObject.SetActive(false);
-        text.gameObject.SetActive(true);
-        bathroomBG.gameObject.SetActive(false);
-        bedroomBG.gameObject.SetActive(true);
-        dirtSpawned = false;
-        cloth.SetActive(false);
-        cursor.SetActive(false);
-        officemanger.enabled = false;
-        office.gameObject.SetActive(false);
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            sleepText.SetActive(false);
+            weekText.SetActive(false);
+            ableToSpace = false;
+            spaceClicked = false;
+            canCursor = false;
+            blank.gameObject.SetActive(true);
+            blink1.gameObject.SetActive(false);
+            blink2.gameObject.SetActive(false);
+            text.gameObject.SetActive(true);
+            bathroomBG.gameObject.SetActive(false);
+            bedroomBG.gameObject.SetActive(true);
+            dirtSpawned = false;
+            cloth.SetActive(false);
+            cursor.SetActive(false);
+            officemanger.enabled = false;
+            office.gameObject.SetActive(false);
 
-        audioSource.Play();
-        Color TXTcolor = carCrashTXT.color;
-        TXTcolor.a = 0;
-        carCrashTXT.color = TXTcolor;
-        StartCoroutine(weekTextVisible());
+            audioSource.Play();
+            Color TXTcolor = carCrashTXT.color;
+            TXTcolor.a = 0;
+            carCrashTXT.color = TXTcolor;
+            StartCoroutine(weekTextVisible());
+        }
+        else
+        {
+            canCursor = true;
+        }
     }
 
     IEnumerator weekTextVisible()

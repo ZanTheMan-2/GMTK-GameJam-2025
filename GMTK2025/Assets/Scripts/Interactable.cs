@@ -12,7 +12,8 @@ public class Interactable : MonoBehaviour
         Paper,
         Stamp,
         Knife,
-        Booze
+        Booze,
+        Button  
     }
     public ObjectType thisType;
     public GameObject putDownSpot;
