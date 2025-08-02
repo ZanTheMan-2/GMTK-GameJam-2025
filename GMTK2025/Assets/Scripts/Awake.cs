@@ -147,7 +147,7 @@ public class Awake : MonoBehaviour
         }
 
         blank2.SetActive(true);
-        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);
+        blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 2);
         driveScene.gameObject.SetActive(false);
         driveCam.gameObject.SetActive(false);
         driveCam3D.SetActive(false);
@@ -204,12 +204,12 @@ public class Awake : MonoBehaviour
         canCursor = true;
         driveBlank.SetActive(false);
         yield return new WaitForSeconds(1.5f);
+        GetComponent<AudioSource>().UnPause();
         for (float i = 0; i < 2; i += 0.05f) // open eyes
         {
             yield return new WaitForSeconds(0.05f);
             GetComponent<AudioSource>().volume = i / 2;
         }
-        GetComponent<AudioSource>().UnPause();
     }
 
     public void DriveDeath()
