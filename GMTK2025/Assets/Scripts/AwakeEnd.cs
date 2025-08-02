@@ -1,20 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AwakeEnd : MonoBehaviour
 {
-    bool spaceClicked1, spaceClicked2;
+    bool spaceClicked1, spaceClicked2, ableToSpace;
     public bool canCursor;
     public GameObject blink1, blink2, blank, blank2;
     public GameObject bedroomBG, bridgeBG, waterBG;
-    public GameObject sleepText, bridgeText, credits;
+    public GameObject sleepText, bridgeText, credits, weekText;
     public AudioSource audioSource;
     bool onBridge;
 
     // Start is called before the first frame update
     void Start()
     {
+        ableToSpace = false;
         spaceClicked1 = false;
         spaceClicked2 = false;
         Cursor.visible = false;
@@ -24,17 +26,36 @@ public class AwakeEnd : MonoBehaviour
         blink2.gameObject.SetActive(false);
         bridgeBG.gameObject.SetActive(false);
         bedroomBG.gameObject.SetActive(true);
+        sleepText.SetActive(false);
 
         audioSource.Play();
+        StartCoroutine(weekTextVisible());
+    }
+
+    IEnumerator weekTextVisible()
+    {
+        weekText.SetActive(true);
+        TMP_Text weekTXT = weekText.GetComponentInChildren<TMP_Text>();
+        for (float i = 0; i < 1; i += 0.05f) // text fade
+        {
+            yield return new WaitForSeconds(0.05f);
+            Color TXTcolor = weekTXT.color;
+            TXTcolor.a = i;
+            weekTXT.color = TXTcolor;
+        }
+        yield return new WaitForSeconds(0.5f);
+        sleepText.SetActive(true);
+        ableToSpace = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying && !spaceClicked1)
+        if (Input.GetKeyDown(KeyCode.Space) && !GetComponent<AudioSource>().isPlaying && !spaceClicked1 && ableToSpace)
         {
             spaceClicked1 = true;
             sleepText.SetActive(false);
+            weekText.SetActive(false);
             blank.gameObject.SetActive(false);
             blink1.gameObject.SetActive(true);
             blink2.gameObject.SetActive(true);
