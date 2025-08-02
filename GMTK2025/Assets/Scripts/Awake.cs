@@ -5,7 +5,6 @@ using TMPro;
 
 public class Awake : MonoBehaviour
 {
-    public GameObject stickies;
     public bool canCursor;
     public TMP_Text text, carCrashTXT;
     public GameObject blink1, blink2, blank, blank2, driveBlank;
@@ -104,7 +103,6 @@ public class Awake : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        stickies.SetActive(false);
         blank2.SetActive(true);
         blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
         canCursor = false;
@@ -205,7 +203,7 @@ public class Awake : MonoBehaviour
         zangySource.Play();
         canCursor = true;
         driveBlank.SetActive(false);
-        yield return new WaitForSeconds(zangySource.clip.length);
+        yield return new WaitForSeconds(1.5f);
         GetComponent<AudioSource>().UnPause();
         for (float i = 0; i < 2; i += 0.05f) // open eyes
         {
@@ -227,7 +225,6 @@ public class Awake : MonoBehaviour
 
         driveScene.gameObject.SetActive(false);
 
-        carCrashTXT.transform.parent.gameObject.SetActive(true);
         carCrashTXT.gameObject.SetActive(true);
         for (float i = 0; i < 1; i += 0.05f) // text fade
         {
@@ -246,7 +243,6 @@ public class Awake : MonoBehaviour
             carCrashTXT.color = TXTcolor;
         }
         driveBlank.SetActive(false);
-        carCrashTXT.transform.parent.gameObject.SetActive(false);
         carCrashTXT.gameObject.SetActive(false);
         blank2.SetActive(true);
         blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1);

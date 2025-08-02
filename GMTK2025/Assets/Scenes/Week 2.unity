@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.040938295, g: 0.07251803, b: 0.1254077, a: 1}
+  m_IndirectSpecularColor: {r: 0.040938832, g: 0.07251831, b: 0.12540889, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -25780,7 +25780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Gotta stay\nnice and \nclean"
+  m_text: Wash your face, by  holding down your mouse
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8abeb662c80b045339f9b23a73c80b2f, type: 2}
   m_sharedMaterial: {fileID: 3667364755698251663, guid: 8abeb662c80b045339f9b23a73c80b2f, type: 2}
@@ -49674,7 +49674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456b3c79152f1473e9c8cacab5fcf788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickies: {fileID: 441834063}
   canCursor: 0
   text: {fileID: 690490904}
   carCrashTXT: {fileID: 477814494}
@@ -49741,7 +49740,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7fcd624e0ce580147b55f6af930870dd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bac02a847fca2ca43ae3c59005a26e91, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -51805,7 +51804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1203795390
 Transform:
   m_ObjectHideFlags: 0
@@ -69041,13 +69040,13 @@ MonoBehaviour:
   budgetTXT: {fileID: 1721476146}
   sanityTXT: {fileID: 1738789202}
   mainString:
-  - Turn local park into carpark
-  - Give food to the homeless
-  - Invest in fossil fuels
-  - Reduce minimum wage
-  - Make monopolization legal
-  - Give employees medical insurance
-  amountString: 0a000000ecffffff0a0000000f0000000a000000e2ffffff
+  - Reduce the wages of employees.
+  - 'Purchase more paper and ink for the company.   '
+  - Hire more cleaners for the company
+  - Remove the suggestion box
+  - 'Chase away the homeless people in the vicinity of COMPANY INC  '
+  - Build an indoor garden
+  amountString: 0a000000f6fffffff6ffffff0a0000000f000000f6ffffff
   amountCost: 0
   blank: {fileID: 2010694900}
   officeScene: {fileID: 581827063}
@@ -69058,10 +69057,10 @@ MonoBehaviour:
   putDownSpot: {fileID: 1742771974}
   paperParent: {fileID: 476265991}
   paperInPlace: 0
-  moneyGainIfYes: 0a000000ecffffff0a0000000f0000000a000000e2ffffff
-  sanityGainIfYes: f6ffffff05000000f6fffffff6fffffff6ffffff05000000
+  moneyGainIfYes: 0a000000f6fffffff6ffffff0a0000000f000000f6ffffff
+  sanityGainIfYes: f6ffffff0000000005000000f6fffffff6ffffff05000000
   moneyGainIfNo: 000000000000000000000000000000000000000000000000
-  sanityGainIfNo: 05000000f6ffffff050000000500000005000000f6ffffff
+  sanityGainIfNo: 0500000000000000f6ffffff0500000005000000f6ffffff
   audioSource: {fileID: 1203795391}
 --- !u!50 &1545712898
 Rigidbody2D:
@@ -71720,7 +71719,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 264504670c6b7444195e383ff9b1429d, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 0c759ecafbf935043a56d60c46efb70f, type: 2}
 --- !u!4 &1607854192
 Transform:
   m_ObjectHideFlags: 0
@@ -101704,12 +101703,12 @@ MonoBehaviour:
   slider: {fileID: 2729653492675439025}
   drinkAmount: 0.2
   initValue: 0.2
-  refillSpeed: 0.05
+  refillSpeed: 0.1
   thirstThreshold: 0.9
   thirstMultiplier: 2
   carScript: {fileID: 2729653492157013455}
   Shake2D: {fileID: 2729653493173897210}
-  beerActive: 1
+  beerActive: 0
   beerVolume: {fileID: 863460742}
 --- !u!212 &2729653494151568769
 SpriteRenderer:

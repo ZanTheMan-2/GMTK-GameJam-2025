@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.040938295, g: 0.07251803, b: 0.1254077, a: 1}
+  m_IndirectSpecularColor: {r: 0.040938832, g: 0.07251831, b: 0.12540889, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -49674,7 +49674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456b3c79152f1473e9c8cacab5fcf788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickies: {fileID: 441834063}
   canCursor: 0
   text: {fileID: 690490904}
   carCrashTXT: {fileID: 477814494}
@@ -51805,7 +51804,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1203795390
 Transform:
   m_ObjectHideFlags: 0
