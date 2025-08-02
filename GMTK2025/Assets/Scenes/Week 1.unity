@@ -30027,7 +30027,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -10
   m_Sprite: {fileID: 21300000, guid: dc676991a6b17411f9988cf178c184ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -49610,7 +49610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456b3c79152f1473e9c8cacab5fcf788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stickies: {fileID: 441834063}
   canCursor: 0
   text: {fileID: 690490904}
   carCrashTXT: {fileID: 477814494}
