@@ -5,7 +5,6 @@ using TMPro;
 
 public class Awake : MonoBehaviour
 {
-    public GameObject stickies;
     public bool canCursor;
     public TMP_Text text, carCrashTXT;
     public GameObject blink1, blink2, blank, blank2, driveBlank;
@@ -104,7 +103,6 @@ public class Awake : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
 
-        stickies.SetActive(false);
         blank2.SetActive(true);
         blank2.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
         canCursor = false;

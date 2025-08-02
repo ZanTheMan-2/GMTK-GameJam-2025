@@ -24,12 +24,10 @@ public class Dialog : MonoBehaviour
     public void Awake()
     {
         source = this.GetComponent<AudioSource>();
-
-
     }
     public void Update()
     {
-        try
+        if (t <= dialog.Length)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -45,16 +43,17 @@ public class Dialog : MonoBehaviour
             if (talking)
             {
                 source.clip = speach[t];
-                source.PlayOneShot(source.clip);    
+                source.PlayOneShot(source.clip);
                 source.Play();
                 talking = false;
             }
-        }catch 
+        }
+        else
         {
-            Debug.Log("Array problem");
             doneTalking = true;
             this.enabled = false;
             spriteRenderer.enabled = false;
+            Debug.Log("Array problem");
         }
     }
 }
