@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CursorScript : MonoBehaviour
 {
@@ -213,6 +214,10 @@ public class CursorScript : MonoBehaviour
                             if (currentSprite.GetComponent<Collider2D>() != null) currentSprite.GetComponent<Collider2D>().enabled = false;
                         }
                     }
+                }
+                else if(currentObject.GetComponent<Interactable>().thisType == Interactable.ObjectType.Button)
+                {
+                    SceneManager.LoadScene("Week 1");
                 }
                 else
                 {
