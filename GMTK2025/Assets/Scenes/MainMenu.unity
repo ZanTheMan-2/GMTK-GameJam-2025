@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 542334943}
   - component: {fileID: 542334942}
   - component: {fileID: 542334945}
+  - component: {fileID: 542334946}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -434,6 +435,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &542334946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542334941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d17a9cb1ab05e4de7b0cfe60ff49c3cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerText: {fileID: 1234392591}
 --- !u!1 &681265360
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +536,6 @@ GameObject:
   - component: {fileID: 732374492}
   - component: {fileID: 732374491}
   - component: {fileID: 732374490}
-  - component: {fileID: 732374489}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -550,19 +563,6 @@ RectTransform:
   m_AnchoredPosition: {x: 158.83755, y: -198.62183}
   m_SizeDelta: {x: 314.665, y: 59}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &732374489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732374487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d17a9cb1ab05e4de7b0cfe60ff49c3cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerText: {fileID: 0}
 --- !u!114 &732374490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 732374489}
+      - m_Target: {fileID: 542334946}
         m_TargetAssemblyTypeName: Butto, Assembly-CSharp
         m_MethodName: playButton
         m_Mode: 1
